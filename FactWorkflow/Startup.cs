@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using FactWorkflow.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FactWorkflow
 {
@@ -30,6 +32,8 @@ namespace FactWorkflow
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<WorkflowContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
