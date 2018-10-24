@@ -18,5 +18,8 @@ namespace FactWorkflow.Models
 
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        public string Token { get; set; }
     }
 }

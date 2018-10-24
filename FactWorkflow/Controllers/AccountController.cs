@@ -71,19 +71,24 @@ namespace FactWorkflow.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await _context.Users.FirstOrDefaultAsync(u => u.UMail == model.Email);
-                if(user == null)
+                Token token = await _context.Tokens.FirstOrDefaultAsync(u => u.TToken == model.Token);
+                if (token != null)
                 {
-                    _context.Users.Add(new User { UMail = model.Email, UPassword = MD5Hash(model.Password), UName = model.Name });
-                    await _context.SaveChangesAsync();
+                    User user = await _context.Users.FirstOrDefaultAsync(u => u.UMail == model.Email);
+                    if (user == null)
+                    {
+                        _context.Users.Add(new User { UMail = model.Email, UPassword = MD5Hash(model.Password), UName = model.Name });
+                        _context.Tokens.Remove(token);
+                        await _context.SaveChangesAsync();
 
-                    await Authenticate(model.Email);
+                        await Authenticate(model.Email);
 
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                    }
                 }
             }
             return View(model);
