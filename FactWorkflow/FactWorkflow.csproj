@@ -15,4 +15,10 @@
     <Folder Include="wwwroot\template\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Administration\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

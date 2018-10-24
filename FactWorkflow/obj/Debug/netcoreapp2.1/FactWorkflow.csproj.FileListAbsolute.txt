@@ -35,3 +35,43 @@ D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Ra
 D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
 D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs
 D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Account\_ViewStart.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.dll
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.pdb
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\bin\Debug\netcoreapp2.1\FactWorkflow.deps.json
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\bin\Debug\netcoreapp2.1\FactWorkflow.runtimeconfig.json
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\bin\Debug\netcoreapp2.1\FactWorkflow.runtimeconfig.dev.json
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\bin\Debug\netcoreapp2.1\FactWorkflow.dll
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\bin\Debug\netcoreapp2.1\FactWorkflow.pdb
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\bin\Debug\netcoreapp2.1\FactWorkflow.Views.dll
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\bin\Debug\netcoreapp2.1\FactWorkflow.Views.pdb
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.csprojAssemblyReference.cache
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.csproj.CoreCompileInputs.cache
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.RazorAssemblyInfo.cache
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.RazorAssemblyInfo.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.AssemblyInfoInputs.cache
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.AssemblyInfo.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.TagHelpers.input.cache
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.TagHelpers.output.cache
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.RazorCoreGenerate.cache
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Account\ForgotPassword.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Account\_ViewStart.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\_ViewStart.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_HomeLayout.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LoginLayout.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.RazorTargetAssemblyInfo.cache
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.RazorTargetAssemblyInfo.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.Views.pdb
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.csproj.CopyComplete
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Administration\_ViewStart.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_AdministrationLayout.g.cshtml.cs
+C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Administration\TokenTable.g.cshtml.cs
