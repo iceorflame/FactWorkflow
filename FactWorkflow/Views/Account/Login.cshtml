@@ -1,22 +1,23 @@
 ﻿@{
     ViewData["Title"] = "Login";
+    @model FactWorkflow.Models.LoginModel;
 }
 
 <div class="container">
     <div class="card card-login mx-auto mt-5">
         <div class="card-header">Login</div>
         <div class="card-body">
-            <form>
+            <form asp-action="Login" asp-controller="Account">
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-                        <label for="inputEmail">Email address</label>
+                        <input type="email" asp-for="Email" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+                        <label asp-for="Email">Email address</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-                        <label for="inputPassword">Password</label>
+                        <input type="password" asp-for="Password" class="form-control" placeholder="Password" required="required">
+                        <label asp-for="Password">Password</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -27,7 +28,7 @@
                         </label>
                     </div>
                 </div>
-                <a class="btn btn-primary btn-block" href="index.html">Login</a>
+                <input type="submit" class="btn btn-primary btn-block" value="Login">
             </form>
             <div class="text-center">
                 <a class="d-block small mt-3" href="~/Account/Register">Register an Account</a>

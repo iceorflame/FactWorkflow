@@ -8,6 +8,8 @@ namespace FactWorkflow.Models
 {
     public class WorkflowContext : DbContext
     {
+        public DbSet<User> Users { get; set; }
+
         public WorkflowContext(DbContextOptions<WorkflowContext> options)
             : base(options) { }
     }
