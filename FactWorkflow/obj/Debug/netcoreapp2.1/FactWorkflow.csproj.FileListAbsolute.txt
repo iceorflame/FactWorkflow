@@ -75,3 +75,6 @@ C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.
 C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Administration\_ViewStart.g.cshtml.cs
 C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_AdministrationLayout.g.cshtml.cs
 C:\Users\nelki\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Administration\TokenTable.g.cshtml.cs
+D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Administration\TokenTable.g.cshtml.cs
+D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Administration\_ViewStart.g.cshtml.cs
+D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_AdministrationLayout.g.cshtml.cs
