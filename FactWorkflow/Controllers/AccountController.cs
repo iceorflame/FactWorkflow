@@ -83,7 +83,7 @@ namespace FactWorkflow.Controllers
                         await _context.SaveChangesAsync();
 
                         EmailService emailService = new EmailService();
-                        await emailService.SendEmailAsync(model.Email, "Тема письма", "Тест письма: тест!");
+                        await emailService.SendEmailAsync(model.Email, "Вас вітає СЕД Факт!", "Ви зареєструвалися в системі електронного документообігу Факт.");
 
                         await Authenticate(model.Email);
 
