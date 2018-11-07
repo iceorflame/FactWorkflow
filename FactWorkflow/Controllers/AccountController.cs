@@ -11,6 +11,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using System.Text;
 using System.Security.Cryptography;
+using FactWorkflow.Services;
 
 namespace FactWorkflow.Controllers
 {
@@ -80,6 +81,9 @@ namespace FactWorkflow.Controllers
                         _context.Users.Add(new User { UMail = model.Email, UPassword = MD5Hash(model.Password), UName = model.Name });
                         _context.Tokens.Remove(token);
                         await _context.SaveChangesAsync();
+
+                        EmailService emailService = new EmailService();
+                        await emailService.SendEmailAsync(model.Email, "Тема письма", "Тест письма: тест!");
 
                         await Authenticate(model.Email);
 
