@@ -10,6 +10,7 @@ namespace FactWorkflow.Models
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Token> Tokens { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         public WorkflowContext(DbContextOptions<WorkflowContext> options)
             : base(options) { }

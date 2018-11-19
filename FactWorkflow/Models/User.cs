@@ -13,5 +13,23 @@ namespace FactWorkflow.Models
         public string UMail { get; set; }
         public string UPassword { get; set; }
         public string UName { get; set; }
+
+        public int? RId { get; set; }
+        public Role Role { get; set; }
+    }
+
+    public class Role
+    {
+        [Key]
+        public int RId { get; set; }
+        public string RName { get; set; }
+        public string RAlterName { get; set; }
+
+        public List<User> Users { get; set; }
+
+        public Role()
+        {
+            Users = new List<User>();
+        }
     }
 }

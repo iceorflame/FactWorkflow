@@ -44,17 +44,14 @@ namespace FactWorkflow.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await _context.Users.FirstOrDefaultAsync(u => u.UMail == model.Email && u.UPassword == MD5Hash(model.Password));
+                User user = await _context.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.UMail == model.Email && u.UPassword == MD5Hash(model.Password));
                 if (user != null)
                 {
-                    await Authenticate(model.Email);
+                    await Authenticate(user);
 
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
                     ModelState.AddModelError("", "Некорректные логин и(или) пароль");
-                }
             }
 
             return View(model);
@@ -85,7 +82,7 @@ namespace FactWorkflow.Controllers
                         EmailService emailService = new EmailService();
                         await emailService.SendEmailAsync(model.Email, "Вас вітає СЕД Факт!", "Ви зареєструвалися в системі електронного документообігу Факт.");
 
-                        await Authenticate(model.Email);
+                        await Authenticate(user);
 
                         return RedirectToAction("Index", "Home");
                     }
@@ -98,11 +95,12 @@ namespace FactWorkflow.Controllers
             return View(model);
         }
 
-        private async Task Authenticate(string userName)
+        private async Task Authenticate(User user)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.UMail),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.RName)
             };
 
             ClaimsIdentity id = new ClaimsIdentity(claims, "FactWorkflowCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);

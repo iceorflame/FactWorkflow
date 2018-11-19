@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FactWorkflow.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +26,7 @@ namespace FactWorkflow.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public IActionResult TokenTable()
         {
             var tokens = _context.Tokens.OrderByDescending(x => x.TId);
@@ -32,6 +34,7 @@ namespace FactWorkflow.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> TokenTable(int tokenCount)
         {
             for (int i=0;i < tokenCount; i++)
