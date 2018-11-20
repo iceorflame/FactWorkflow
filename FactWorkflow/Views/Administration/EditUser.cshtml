@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Users";
+    @model FactWorkflow.Models.User;
+}
+
+<div id="content-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Tables</li>
+        </ol>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Data Table Example
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div class="col-lg-6">
+                        <form role="form" method="post">
+                            @Html.HiddenFor(model => model.UId)
+                            @Html.HiddenFor(model => model.UPassword)
+                            <div class="form-group">
+                                <label>Text Input with Placeholder</label>
+                                @Html.EditorFor(model => model.UName, new { htmlAttributes = new { @autocomplete = "off", @type = "text", @class="form-control", @readonly = "true" }})
+                            </div>
+                            <div class="form-group">
+                                <label>Text Input with Placeholder</label>
+                                @Html.EditorFor(model => model.UMail, new { htmlAttributes = new { @autocomplete = "off", @type = "text", @class="form-control", @readonly = "true" } })
+                            </div>
+                            <div class="form-group">
+                                <label>Text Input with Placeholder</label>
+                                @Html.DropDownListFor(model => model.RId, ViewBag.Roles as SelectList, new { @type = "text", @class = "form-control"  })
+                            </div>
+                            <button type="submit" class="btn btn-outline-dark">Submit Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright © Your Website 2018</span>
+            </div>
+        </div>
+    </footer>
+
+</div>
+<!-- /.content-wrapper -->

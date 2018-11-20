@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FactWorkflow.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace FactWorkflow.Controllers
@@ -53,6 +54,47 @@ namespace FactWorkflow.Controllers
             }
             await _context.SaveChangesAsync();
             return TokenTable();
+        }
+
+        [HttpGet]
+        //[Authorize(Roles = "admin")]
+        public IActionResult UserTable()
+        {
+            var users = _context.Users.Include(u => u.Role).OrderByDescending(x => x.UId);
+            return View(users.ToList());
+        }
+
+
+        public IActionResult DeleteUser(int? id)
+        {
+            User user = _context.Users.Find(id);
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("UserTable", "Administration");
+        }
+
+        [HttpGet]
+        public IActionResult EditUser(int? id)
+        {
+            User user = _context.Users.Find(id);
+            if (user != null)
+            {
+                SelectList roles = new SelectList(_context.Roles, "RId", "RAlterName", user.RId);
+                ViewBag.Roles = roles;
+                return View(user);
+            }
+            return RedirectToAction("UserTable", "Administration"); 
+        }
+
+        [HttpPost]
+        public IActionResult EditUser(User user)
+        {
+            _context.Entry(user).State = EntityState.Modified;
+            _context.SaveChanges();
+            return RedirectToAction("UserTable", "Administration");
         }
     }
 }
