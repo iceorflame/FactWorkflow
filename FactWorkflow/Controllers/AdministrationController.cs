@@ -60,6 +60,7 @@ namespace FactWorkflow.Controllers
         //[Authorize(Roles = "admin")]
         public IActionResult UserTable()
         {
+            ViewBag.Active = "usertable";
             var users = _context.Users.Include(u => u.Role).OrderByDescending(x => x.UId);
             return View(users.ToList());
         }
