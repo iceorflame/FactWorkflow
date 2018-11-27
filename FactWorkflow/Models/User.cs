@@ -16,6 +16,13 @@ namespace FactWorkflow.Models
 
         public int? RId { get; set; }
         public Role Role { get; set; }
+
+        public List<Resolve> Resolves { get; set; }
+
+        public User()
+        {
+            Resolves = new List<Resolve>();
+        }
     }
 
     public class Role

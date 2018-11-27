@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace FactWorkflow.Controllers
 {
@@ -59,6 +61,47 @@ namespace FactWorkflow.Controllers
                 _context.SaveChanges();
             }
             return RedirectToAction("DataChange", "Home");
+        }
+
+        [HttpGet]
+        public IActionResult AddDocument()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddDocument(Document document, Models.File file, Resolve resolve, IFormFile uploadFile, int classification)
+        {
+            _context.Documents.Add(document);
+            _context.SaveChanges();
+
+            if(uploadFile != null)
+            {
+                byte[] imageData = null;
+                using (var binaryReader = new BinaryReader(uploadFile.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)uploadFile.Length);
+                }
+                file.FByte = imageData;
+                file.FName = uploadFile.FileName;
+                file.FType = uploadFile.ContentType;
+                _context.Files.Add(file);
+                document.FId = file.FId;
+            }
+            document.DDate = DateTime.Now;
+            document.DIndex = document.DId+"/"+classification+"/1.9";
+            //_context.Documents.Add(document);
+            _context.Entry(document).State = EntityState.Modified;
+
+            resolve.DId = document.DId;
+            User user = _context.Users.FirstOrDefault(u => u.RId == 4);
+            resolve.UId = user.UId;
+            resolve.RAddress = user.UName;
+            resolve.RStatus = "На підтвердженні у ректора";
+            _context.Resolves.Add(resolve);
+            _context.SaveChanges();
+
+            return RedirectToAction("AddDocument","Home");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
