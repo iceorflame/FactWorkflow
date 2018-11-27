@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Tokens";
+    @model FactWorkflow.Models.Resolve;
+}
+
+<div id="content-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Tables</li>
+        </ol>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Data Table Example
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div class="col-lg-6">
+                        <form role="form" enctype="multipart/form-data" method="post">
+                            @Html.HiddenFor(model => model.DId)
+                            <div class="form-group">
+                                <label>Text Input with Placeholder</label>
+                                @Html.EditorFor(model => model.RAddress, new { htmlAttributes = new { @autocomplete = "off", @type = "text", @class = "form-control", @readonly = "true" } })
+                            </div>
+                            <div class="form-group">
+                                <label>Selects</label>
+                                <select id="roleSelect" class="form-control" name="classification"></select>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright © Your Website 2018</span>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>/
+<script>
+    $(document).ready(function () {
+        var roles;
+        $.ajax({
+            type: "get",
+            url: "/Home/GetRoles",
+            success: function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    $("#roleSelect").append(new Option(data[i].rAlterName, data[i].rId, false, false));
+                }
+            },
+        });
+    });
+</script>

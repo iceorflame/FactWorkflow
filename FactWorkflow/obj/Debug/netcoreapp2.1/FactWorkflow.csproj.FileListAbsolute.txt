@@ -119,3 +119,6 @@ D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Fa
 D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.csproj.CopyComplete
 D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\AddDocument.g.cshtml.cs
 D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.csprojAssemblyReference.cache
+D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\DocumentTable.g.cshtml.cs
+D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\AddResolve.g.cshtml.cs
+D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\SendResolve.g.cshtml.cs

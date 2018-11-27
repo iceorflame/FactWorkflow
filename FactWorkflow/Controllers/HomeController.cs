@@ -11,6 +11,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FactWorkflow.Controllers
 {
@@ -90,7 +91,6 @@ namespace FactWorkflow.Controllers
             }
             document.DDate = DateTime.Now;
             document.DIndex = document.DId+"/"+classification+"/1.9";
-            //_context.Documents.Add(document);
             _context.Entry(document).State = EntityState.Modified;
 
             resolve.DId = document.DId;
@@ -102,6 +102,64 @@ namespace FactWorkflow.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("AddDocument","Home");
+        }
+
+        [HttpGet]
+        public IActionResult DocumentTable()
+        {
+            var resolves = _context.Resolves.OrderByDescending(x => x.DId);
+            return View(resolves);
+        }
+
+        public IActionResult ChangeStatus(int? did, int? uid)
+        {
+            Resolve resolve = _context.Resolves.Find(did, uid);
+            if (resolve != null)
+            {
+                resolve.RStatus = "Документ переглянуто";
+                _context.Entry(resolve).State = EntityState.Modified;
+                _context.SaveChanges();
+            }
+            return RedirectToAction("DocumentTable", "Home");
+        }
+
+        [HttpGet]
+        public IActionResult AddResolve(int? did, int? uid)
+        {
+            Resolve resolve = _context.Resolves.Find(did, uid);
+            resolve.RAddress = "";
+            return View(resolve);
+        }
+
+        [HttpPost]
+        public IActionResult AddResolve(Resolve resolve)
+        {
+            User user = _context.Users.FirstOrDefault(x => x.RId == 3);
+            resolve.UId = user.UId;
+            resolve.RStatus = "Очікує відправки";
+            _context.Resolves.Add(resolve);
+            _context.SaveChanges();
+            return RedirectToAction("DocumentTable","Home");
+        }
+
+        [HttpGet]
+        public IActionResult SendResolve(int? did, int? uid)
+        {
+            Resolve resolve = _context.Resolves.Find(did, uid);
+            return View(resolve);
+        }
+
+        [HttpGet]
+        public IActionResult GetRoles()
+        {
+            var roles = _context.Roles.Where(x => x.RId > 4).ToList();
+            return new ObjectResult(roles);
+        }
+
+        [HttpPost]
+        public IActionResult SendResolve(Resolve resolve)
+        {
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

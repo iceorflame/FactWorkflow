@@ -82,7 +82,7 @@ namespace FactWorkflow.Controllers
                         //EmailService emailService = new EmailService();
                         //await emailService.SendEmailAsync(model.Email, "Вас вітає СЕД Факт!", "Ви зареєструвалися в системі електронного документообігу Факт.");
 
-                        await Authenticate(user);
+                        //await Authenticate(user);
 
                         return RedirectToAction("Index", "Home");
                     }
