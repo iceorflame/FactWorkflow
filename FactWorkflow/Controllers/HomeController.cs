@@ -156,10 +156,22 @@ namespace FactWorkflow.Controllers
             return new ObjectResult(roles);
         }
 
-        [HttpPost]
-        public IActionResult SendResolve(Resolve resolve)
+        [HttpGet]
+        public IActionResult GetUsers(int? id)
         {
-            return View();
+            var users = _context.Users.Where(x => x.RId == id).Select(x => new DTOUser(x)).ToList();
+            return new ObjectResult(users);
+        }
+
+        [HttpPost]
+        public IActionResult SendResolve(int docid, DTOUser[] users)
+        {
+            for (int i = 0; i < users.Length; i++)
+            {
+                _context.Resolves.Add(new Resolve { DId = docid, UId = users[i].UId, RAddress = users[i].UName, RStatus = "Не переглянуто" });
+            }
+            _context.SaveChanges();
+            return Ok();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

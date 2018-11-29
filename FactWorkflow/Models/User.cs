@@ -25,6 +25,23 @@ namespace FactWorkflow.Models
         }
     }
 
+    public class DTOUser
+    {
+        public int UId { get; set; }
+        public string UName { get; set; }
+
+        public DTOUser()
+        {
+
+        }
+
+        public DTOUser(User user)
+        {
+            this.UId = user.UId;
+            this.UName = user.UName;
+        }
+    }
+
     public class Role
     {
         [Key]
