@@ -10,58 +10,57 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <a href="~/Home/Index">Головна</a>
             </li>
-            <li class="breadcrumb-item active">Tables</li>
+            <li class="breadcrumb-item active">Додати документ</li>
         </ol>
 
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
-                Data Table Example
+                Форма додавання документу
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <div class="col-lg-6">
                         <form role="form" enctype="multipart/form-data" method="post">
                             <div class="form-group">
-                                <label>Selects</label>
+                                <label>Класифікатор</label>
                                 <select class="form-control" name="classification">
                                     <option value="01">01 - Адміністрація Президента України, Верховна Рада України, Кабінет Міністрів України та його органи</option>
-                                    <option value="02">02</option>
-                                    <option value="03">03</option>
-                                    <option value="04">04</option>
-                                    <option value="05">05</option>
-                                    <option value="06">06</option>
-                                    <option value="07">07</option>
-                                    <option value="08">08</option>
-                                    <option value="09">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
+                                    <option value="02">02 - Міністерство освіти і науки України, Ради ректорів, Державна атестаційна комісія України</option>
+                                    <option value="03">03 - Інші міністерства, органи державної виконавчої влади</option>
+                                    <option value="04">04 - Народні депутати України, депутати місцевих рад</option>
+                                    <option value="05">05 - Академії наук, науково-дослідні та проектні організації</option>
+                                    <option value="06">06 - Посольства, консульства України за кордоном, посольства, консульства зарубіжних країн в Україні, закордонні організації</option>
+                                    <option value="07">07 - Вищі та середні заклади освіти</option>
+                                    <option value="08">08 - Банки, торговельні організації, фонди, ревізійні організації, Торгово-промислова палата, Центри. Асоціації</option>
+                                    <option value="09">09 - Київгаз, Київенерго, Укртелеком, Київводоканал, Київтеплоенерго, Київзембуд</option>
+                                    <option value="10">10 - Поліція, органи адвокатури, прокуратури та суду, військкомати, військові частини, СБУ</option>
+                                    <option value="11">11 - Будівельні організації, підприємства(юридичні особи)</option>
+                                    <option value="12">12 - Інші підприємства та організації</option>
+                                    <option value="13">13 - Редакції газет, журналів, бібліотеки, музеї</option>
+                                    <option value="14">14 - Фізичні особи</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label asp-for="DFrom">Text Input with Placeholder</label>
+                                <label asp-for="DFrom">Кореспондент</label>
                                 <input asp-for="DFrom" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label asp-for="DAbout">Text area</label>
+                                <label asp-for="DAbout">Короткий зміст</label>
                                 <textarea asp-for="DAbout" class="form-control" rows="3"></textarea>
                             </div>
                             <div class="form-group">
-                                <label>File input</label>
+                                <label>Завантажити файл</label>
                                 <br>
                                 <input type="file" name="uploadFile">
                             </div>
-                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="submit" class="btn btn-default">Додати документ</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
 
     </div>

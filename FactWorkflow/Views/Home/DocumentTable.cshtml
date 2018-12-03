@@ -10,60 +10,71 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <a href="~/Home/Index">Головна</a>
             </li>
-            <li class="breadcrumb-item active">Tables</li>
+            <li class="breadcrumb-item active">Документи</li>
         </ol>
 
         <!-- DataTables Example -->
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
-                Data Table Example
+                Список документів
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>№</th>
+                                <th>Індекс</th>
+                                <th>Дата</th>
+                                <th>Кореспондент</th>
+                                <th>Зміст</th>
+                                <th>Резолюція</th>
+                                <th>Статус</th>
+                                <th>Документ</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                <th>Ім'я</th>
-                                <th>Пошта</th>
-                                <th>Роль</th>
-                                <th>Роль</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
+                                <th>№</th>
+                                <th>Індекс</th>
+                                <th>Дата</th>
+                                <th>Кореспондент</th>
+                                <th>Зміст</th>
+                                <th>Резолюція</th>
+                                <th>Статус</th>
+                                <th>Документ</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                <th>Ім'я</th>
-                                <th>Пошта</th>
-                                <th>Роль</th>
-                                <th>Роль</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             @foreach (var item in Model)
                             {
                             <tr>
-                                <td><a href="~/Home/ChangeStatus?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                                <td><a href="~/Home/AddResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                                <td><a href="~/Home/SendResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
                                 <td>@item.DId</td>
                                 <td>@item.UId</td>
                                 <td>@item.RAddress</td>
                                 <td>@item.RStatus</td>
+                                <td>@item.RStatus</td>
+                                <td>@item.RStatus</td>
+                                <td>@item.RStatus</td>
+                                <td>@item.RStatus</td>
+                                <td><a href="~/Home/ChangeStatus?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                <td><a href="~/Home/AddResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                <td><a href="~/Home/SendResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
                             </tr>
                             }
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
 
 

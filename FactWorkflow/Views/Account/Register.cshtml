@@ -1,52 +1,52 @@
 ﻿@{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Реєстрація";
     @model FactWorkflow.Models.RegisterModel;
 }
 
 <div class="container">
     <div class="card card-register mx-auto mt-5">
-        <div class="card-header">Register an Account</div>
+        <div class="card-header">Зареєструвати аккаунт</div>
         <div class="card-body">
             <form asp-action="Register" asp-controller="Account" asp-antiforgery="true">
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="text" asp-for="Name" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
-                        <label asp-for="Name">First name</label>
+                        <input type="text" asp-for="Name" class="form-control" placeholder="ПІБ/Назва підрозділу" required="required" autofocus="autofocus">
+                        <label asp-for="Name">ПІБ/Назва підрозділу</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="email" asp-for="Email" class="form-control" placeholder="Email address" required="required">
-                        <label asp-for="Email">Email address</label>
+                        <input type="email" asp-for="Email" class="form-control" placeholder="Електронна адреса" required="required">
+                        <label asp-for="Email">Електронна адреса</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-label-group">
-                                <input type="password" asp-for="Password" class="form-control" placeholder="Password" required="required">
-                                <label asp-for="Password">Password</label>
+                                <input type="password" asp-for="Password" class="form-control" placeholder="Пароль" required="required">
+                                <label asp-for="Password">Пароль</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-label-group">
-                                <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Confirm password" required="required">
-                                <label asp-for="ConfirmPassword">Confirm password</label>
+                                <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Підтвердження паролю" required="required">
+                                <label asp-for="ConfirmPassword">Підтвердження паролю</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="text" asp-for="Token" class="form-control" placeholder="Token" required="required">
-                        <label asp-for="Token">Token</label>
+                        <input type="text" asp-for="Token" class="form-control" placeholder="Реєстраційний ключ" required="required">
+                        <label asp-for="Token">Реєстраційний ключ</label>
                     </div>
                 </div>
-                <input type="submit" class="btn btn-primary btn-block" value="Register">
+                <input type="submit" class="btn btn-primary btn-block" value="Зареєтруватися">
             </form>
             <div class="text-center">
-                <a class="d-block small mt-3" href="~/Account/Login">Login Page</a>
-                <a class="d-block small" href="~/Account/ForgotPassword">Forgot Password?</a>
+                <a class="d-block small mt-3" href="~/Account/Login">Сторінка входу</a>
+                <!--<a class="d-block small" href="~/Account/ForgotPassword">Forgot Password?</a>-->
             </div>
         </div>
     </div>

@@ -10,15 +10,15 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <a href="~/Home/Index">Головна</a>
             </li>
-            <li class="breadcrumb-item active">Tables</li>
+            <li class="breadcrumb-item active">Дані користувача</li>
         </ol>
 
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
-                Data Table Example
+                Зміна даних користувача
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -28,27 +28,26 @@
                             @Html.HiddenFor(model => model.UPassword)
                             @Html.HiddenFor(model => model.RId)
                             <div class="form-group">
-                                <label>Text Input with Placeholder</label>
+                                <label>ПІБ/Назва підрозділу</label>
                                 @Html.EditorFor(model => model.UName, new { htmlAttributes = new { @autocomplete = "off", @type = "text", @class = "form-control" } })
                             </div>
                             <div class="form-group">
-                                <label>Text Input with Placeholder</label>
+                                <label>Електронна пошта</label>
                                 @Html.EditorFor(model => model.UMail, new { htmlAttributes = new { @autocomplete = "off", @type = "text", @class = "form-control" } })
                             </div>
                             <div class="form-group">
-                                <label>Text Input with Placeholder(unnecessary)</label>
-                                <input type="password" class="form-control" placeholder="Enter text" name="newPassword">
+                                <label>Новий пароль(необов'язково)</label>
+                                <input type="password" class="form-control" placeholder="Новий пароль" name="newPassword">
                             </div>
                             <div class="form-group">
-                                <label>Text Input with Placeholder(unnecessary)</label>
-                                <input type="password" class="form-control" placeholder="Enter text" name="confirmPassword">
+                                <label>Підтвердження нового паролю(необов'язково)</label>
+                                <input type="password" class="form-control" placeholder="Підтвердженя нового паролю" name="confirmPassword">
                             </div>
-                            <button type="submit" class="btn btn-outline-dark">Submit Button</button>
+                            <button type="submit" class="btn btn-outline-dark">Змінити дані</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
 
     </div>

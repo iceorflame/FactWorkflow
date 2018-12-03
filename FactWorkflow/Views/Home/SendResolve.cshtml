@@ -10,71 +10,68 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <a href="~/Home/Index">Головна</a>
             </li>
-            <li class="breadcrumb-item active">Tables</li>
+            <li class="breadcrumb-item active">Відправити резолюцію</li>
         </ol>
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
-                Data Table Example
+                Виконавці
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="arrUsers" class="table table-bordered" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Delete</th>
+                                <th>ПІБ</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Name</th>
-                                <th>Delete</th>
+                                <th>ПІБ</th>
+                                <th></th>
                             </tr>
                         </tfoot>
                         <tbody>
                             
                         </tbody>
                     </table>
-                    <button class="btn btn-default" onclick="submit()">Submit</button>
+                    <button class="btn btn-default" onclick="submit()">Відправити</button>
                 </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                
         </div>
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
-                Data Table Example
+                Додати виконавця
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <div class="col-lg-6">
                             @Html.HiddenFor(model => model.DId)
                             <div class="form-group">
-                                <label>Text Input with Placeholder</label>
+                                <label>Резолюція</label>
                                 @Html.EditorFor(model => model.RAddress, new { htmlAttributes = new { @autocomplete = "off", @type = "text", @class = "form-control", @readonly = "true" } })
                             </div>
                             <div class="form-group">
-                                <label>Selects</label>
+                                <label>Посада/Відділ</label>
                                 <select id="roleSelect" class="form-control" name="roleSelect" onchange="getUsers()"></select>
                             </div>
                             <div class="form-group">
-                                <label>Selects</label>
+                                <label>Виконавець/Кафедра</label>
                                 <select id="userSelect" class="form-control" name="userSelect"></select>
                             </div>
                             <div id="cathedraUser" name="cathedraUser" class="form-group">
-                                <label>Text Input with Placeholder</label>
+                                <label>ПІБ</label>
                                 <input id="uzver" class="form-control">
                             </div>
-                            <button class="btn btn-default" onclick="addResolution()">Submit Button</button>
+                            <button class="btn btn-default" onclick="addResolution()">Додати виконавця</button>
                     </div>
                 </div>
             </div>
-
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
     </div>
     <!-- /.container-fluid -->

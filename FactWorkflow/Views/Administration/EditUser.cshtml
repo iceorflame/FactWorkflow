@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Users";
+    ViewData["Title"] = "Зміна ролі користувача";
     @model FactWorkflow.Models.User;
 }
 
@@ -10,15 +10,15 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <span>Адміністрування</span>
             </li>
-            <li class="breadcrumb-item active">Tables</li>
+            <li class="breadcrumb-item">Зміна ролі користувача</li>
         </ol>
 
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
-                Data Table Example
+                Змінити роль користувача
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -27,23 +27,22 @@
                             @Html.HiddenFor(model => model.UId)
                             @Html.HiddenFor(model => model.UPassword)
                             <div class="form-group">
-                                <label>Text Input with Placeholder</label>
+                                <label>ПІБ/Назва підрозділу</label>
                                 @Html.EditorFor(model => model.UName, new { htmlAttributes = new { @autocomplete = "off", @type = "text", @class="form-control", @readonly = "true" }})
                             </div>
                             <div class="form-group">
-                                <label>Text Input with Placeholder</label>
+                                <label>Електронна пошта</label>
                                 @Html.EditorFor(model => model.UMail, new { htmlAttributes = new { @autocomplete = "off", @type = "text", @class="form-control", @readonly = "true" } })
                             </div>
                             <div class="form-group">
-                                <label>Text Input with Placeholder</label>
+                                <label>Роль користувача</label>
                                 @Html.DropDownListFor(model => model.RId, ViewBag.Roles as SelectList, new { @type = "text", @class = "form-control"  })
                             </div>
-                            <button type="submit" class="btn btn-outline-dark">Submit Button</button>
+                            <button type="submit" class="btn btn-outline-dark">Змінити роль</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
 
     </div>

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Users";
+    ViewData["Title"] = "Список користувачів";
     @model IEnumerable<FactWorkflow.Models.User>;
 }
 
@@ -10,54 +10,53 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <span>Адміністрування</span>
             </li>
-            <li class="breadcrumb-item active">Tables</li>
+            <li class="breadcrumb-item">Користувачі</li>
         </ol>
 
         <!-- DataTables Example -->
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
-                Data Table Example
+                Таблиця користувачів
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th></th>
                                 <th>Ім'я</th>
                                 <th>Пошта</th>
                                 <th>Роль</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th></th>
-                                <th></th>
                                 <th>Ім'я</th>
                                 <th>Пошта</th>
                                 <th>Роль</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </tfoot>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td><a href="~/Administration/DeleteUser/@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                                    <td><a href="~/Administration/EditUser/@item.UId"><i class="fa fa-pen bigger-130 padding-2 grey"></i></a></td>
-                                    <td>@item.UName</td>
-                                    <td>@item.UMail</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Role.RAlterName)</td>
-                                </tr>
+                            <tr>
+                                <td>@item.UName</td>
+                                <td>@item.UMail</td>
+                                <td>@Html.DisplayFor(modelItem => item.Role.RAlterName)</td>
+                                <td align="center"><a href="~/Administration/DeleteUser/@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                <td align="center"><a href="~/Administration/EditUser/@item.UId"><i class="fa fa-pen bigger-130 padding-2 grey"></i></a></td>
+                            </tr>
                             }
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
 
 

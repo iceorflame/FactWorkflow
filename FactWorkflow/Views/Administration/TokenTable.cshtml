@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Tokens";
+    ViewData["Title"] = "Реєстраційні ключі";
     @model IEnumerable<FactWorkflow.Models.Token>;
 }
 
@@ -10,49 +10,48 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <span>Адміністрування</span>
             </li>
-            <li class="breadcrumb-item active">Tables</li>
+            <li class="breadcrumb-item">Реєстраційні ключі</li>
         </ol>
 
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
-                Data Table Example
+                Генерація реєстраційних ключів
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <div class="col-lg-6">
                         <form role="form" method="post">
                             <div class="form-group">
-                                <label>Text Input with Placeholder</label>
-                                <input type="number" class="form-control" placeholder="Enter text" name="tokenCount">
+                                <label>Введіть кількість ключів</label>
+                                <input type="number" class="form-control" placeholder="Введіть число" name="tokenCount">
                             </div>
-                                <button type="submit" class="btn btn-default">Submit Button</button>
+                                <button type="submit" class="btn btn-default">Згенерувати</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
 
         <!-- DataTables Example -->
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
-                Data Table Example
+                Таблиця реєстраційних ключів
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Token</th>
+                                <th>Ключ</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Token</th>
+                                <th>Ключ</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -66,7 +65,6 @@
                     </table>
                 </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
 
 

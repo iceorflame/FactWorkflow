@@ -1,39 +1,39 @@
 ﻿@{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Авторизація";
     @model FactWorkflow.Models.LoginModel;
 }
 
 <div class="container">
     <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Login</div>
+        <div class="card-header">Авторизація</div>
         <div class="card-body">
             <form asp-action="Login" asp-controller="Account">
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="email" asp-for="Email" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-                        <label asp-for="Email">Email address</label>
+                        <input type="email" asp-for="Email" class="form-control" placeholder="Електронна адреса" required="required" autofocus="autofocus">
+                        <label asp-for="Email">Електронна адреса</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="password" asp-for="Password" class="form-control" placeholder="Password" required="required">
-                        <label asp-for="Password">Password</label>
+                        <input type="password" asp-for="Password" class="form-control" placeholder="Пароль" required="required">
+                        <label asp-for="Password">Пароль</label>
                     </div>
                 </div>
-                <div class="form-group">
+                <!--<div class="form-group">
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" value="remember-me">
                             Remember Password
                         </label>
                     </div>
-                </div>
-                <input type="submit" class="btn btn-primary btn-block" value="Login">
+                </div>-->
+                <input type="submit" class="btn btn-primary btn-block" value="Увійти">
             </form>
             <div class="text-center">
-                <a class="d-block small mt-3" href="~/Account/Register">Register an Account</a>
-                <a class="d-block small" href="~/Account/ForgotPassword">Forgot Password?</a>
+                <a class="d-block small mt-3" href="~/Account/Register">Зареєструвати аккаунт</a>
+                <!--<a class="d-block small" href="~/Account/ForgotPassword">Forgot Password?</a>-->
+            </div>
             </div>
         </div>
     </div>
-</div>
