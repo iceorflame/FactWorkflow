@@ -1,5 +1,7 @@
 ﻿@{
-    string tuturu;
+    string add_document;
+    string document_table;
+    string index;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -58,30 +60,42 @@
     </nav>
 
     <div id="wrapper">
-
+        @if (ViewBag.Active == "Index")
+        {
+            add_document = "nav-item";
+            document_table = "nav-item";
+            index = "nav-item active";
+        }
+        else if (ViewBag.Active == "AddDocument")
+        {
+            add_document = "nav-item active";
+            document_table = "nav-item";
+            index = "nav-item";
+        }
+        else
+        {
+            add_document = "nav-item";
+            document_table = "nav-item active";
+            index = "nav-item";
+        }
         <!-- Sidebar -->
         <ul class="sidebar navbar-nav">
-            <li class="nav-item">
+            <li class="@index">
                 <a class="nav-link" href="~/Home/Index">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Головна сторінка</span>
                 </a>
             </li>
-            @if (ViewBag.Active == "usertable")
+            @if (User.IsInRole("office"))
             {
-                tuturu = "nav-item active";
+                <li class="@add_document">
+                    <a class="nav-link" href="~/Home/AddDocument">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Додати документ</span>
+                    </a>
+                </li>
             }
-            else
-            {
-                tuturu = "nav-item";
-            }
-            <li class="@tuturu">
-                <a class="nav-link" href="~/Home/AddDocument">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Додати документ</span>
-                </a>
-            </li>
-            <li class="nav-item active">
+            <li class="@document_table">
                 <a class="nav-link" href="~/Home/DocumentTable">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Документи</span>

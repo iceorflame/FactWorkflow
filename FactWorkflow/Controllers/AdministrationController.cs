@@ -30,6 +30,7 @@ namespace FactWorkflow.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult TokenTable()
         {
+            ViewBag.Active = "Tokens";
             var tokens = _context.Tokens.OrderByDescending(x => x.TId);
             return View(tokens.ToList());
         }

@@ -36,9 +36,10 @@
                                 <th>Резолюція</th>
                                 <th>Статус</th>
                                 <th>Документ</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                @if (User.IsInRole("vrector") || User.IsInRole("dean"))
+                                {
+                                    <th></th>
+                                }
                             </tr>
                         </thead>
                         <tfoot>
@@ -51,9 +52,10 @@
                                 <th>Резолюція</th>
                                 <th>Статус</th>
                                 <th>Документ</th>
+                                @if (User.IsInRole("vrector") || User.IsInRole("dean"))
+                                {
                                 <th></th>
-                                <th></th>
-                                <th></th>
+                                }
                             </tr>
                         </tfoot>
                         <tbody>
@@ -65,10 +67,7 @@
                                         <td colspan="5"></td>
                                         <td>@item.RAddress</td>
                                         <td>@item.RStatus</td>
-                                        <td></td>
-                                        <td><a href="~/Home/ChangeStatus?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                                        <td><a href="~/Home/AddResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                                        <td><a href="~/Home/SendResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                        <td colspan="2"></td>
                                     </tr>
                                 }
                                 else
@@ -83,9 +82,10 @@
                                         <td>@item.RAddress</td>
                                         <td>@item.RStatus</td>
                                         <td><a href="~/Home/Download/@item.Document.FId">@Html.DisplayFor(modelItem => item.Document.File.FName)</a></td>
-                                        <td><a href="~/Home/ChangeStatus?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                                        <td><a href="~/Home/AddResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                                        <td><a href="~/Home/SendResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                        @if(User.IsInRole("vrector") || User.IsInRole("dean")) 
+                                        {
+                                        <td align="center"><a href="~/Home/AddResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-plus bigger-130 padding-2 grey"></i></a></td>
+                                        }
                                     </tr>
                                 }
                             }

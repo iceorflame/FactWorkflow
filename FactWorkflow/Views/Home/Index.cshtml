@@ -61,15 +61,15 @@
                                 <td>@item.RAddress</td>
                                 @if (User.IsInRole("office"))
                                 {
-                                    <td><a href="~/Home/SendResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                    <td align="center"><a href="~/Home/SendResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-send bigger-130 padding-2 grey"></i></a></td>
                                 }
                                 else if (User.IsInRole("rector"))
                                 {
-                                    <td><a href="~/Home/AddResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                    <td align="center"><a href="~/Home/AddResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-plus bigger-130 padding-2 grey"></i></a></td>
                                 }
                                 else
                                 {
-                                    <td><a href="~/Home/ChangeStatus?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                    <td align="center"><a href="~/Home/ChangeStatus?did=@item.DId&uid=@item.UId"><i class="fa fa-bell bigger-130 padding-2 grey"></i></a></td>
                                 }
                             </tr>
                             }

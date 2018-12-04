@@ -38,6 +38,7 @@ namespace FactWorkflow.Controllers
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
         public IActionResult Index()
         {
+            ViewBag.Active = "Index";
             if (HttpContext.User.IsInRole("office"))
             {
                 var doc1 = _context.Resolves.Where(r => r.RStatus == "Очікує відправки").Include(d => d.Document);
@@ -83,6 +84,7 @@ namespace FactWorkflow.Controllers
         [Authorize(Roles = "office")]
         public IActionResult AddDocument()
         {
+            ViewBag.Active = "AddDocument";
             return View();
         }
 
@@ -125,8 +127,13 @@ namespace FactWorkflow.Controllers
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
         public IActionResult DocumentTable()
         {
-            var resolves = _context.Resolves.Include(u => u.User).Include(d=>d.Document.File);
-            return View(resolves);
+            if (HttpContext.User.IsInRole("rector") || HttpContext.User.IsInRole("office"))
+            {
+                var resolves = _context.Resolves.Include(u => u.User).Include(d => d.Document.File).Where(x => x.User.RId > 4);
+                return View(resolves);
+            }
+            var resolves2 = _context.Resolves.Include(u => u.User).Include(d => d.Document.File).Where(x => x.User.UMail == HttpContext.User.Identity.Name);
+            return View(resolves2);
         }
 
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
@@ -139,7 +146,7 @@ namespace FactWorkflow.Controllers
                 _context.Entry(resolve).State = EntityState.Modified;
                 _context.SaveChanges();
             }
-            return RedirectToAction("DocumentTable", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
