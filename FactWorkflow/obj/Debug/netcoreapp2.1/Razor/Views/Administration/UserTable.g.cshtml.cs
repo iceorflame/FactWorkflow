@@ -141,7 +141,7 @@ using FactWorkflow.Models;
             WriteLiteral("</td>\r\n                                <td align=\"center\">");
             EndContext();
             BeginContext(1956, 105, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4a59df6bc63444fcaac789f0b71949c7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2dccadc5a4494f08b69112a74fa587d0", async() => {
                 BeginContext(2004, 53, true);
                 WriteLiteral("<i class=\"fa fa-trash bigger-130 padding-2 grey\"></i>");
                 EndContext();
@@ -169,7 +169,7 @@ AddHtmlAttributeValue("", 1993, item.UId, 1993, 9, false);
             WriteLiteral("</td>\r\n                                <td align=\"center\">");
             EndContext();
             BeginContext(2119, 101, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4b597e00e404420a854b355dd5a8128a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e03ffefd478449ca9a8fb80be54c98e", async() => {
                 BeginContext(2165, 51, true);
                 WriteLiteral("<i class=\"fa fa-pen bigger-130 padding-2 grey\"></i>");
                 EndContext();

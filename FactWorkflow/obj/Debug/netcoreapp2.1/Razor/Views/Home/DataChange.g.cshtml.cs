@@ -65,7 +65,7 @@ using FactWorkflow.Models;
             WriteLiteral("\r\n<div id=\"content-wrapper\">\r\n\r\n    <div class=\"container-fluid\">\r\n\r\n        <!-- Breadcrumbs-->\r\n        <ol class=\"breadcrumb\">\r\n            <li class=\"breadcrumb-item\">\r\n                ");
             EndContext();
             BeginContext(268, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "43267423fcc24899bece76f6179e2782", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d89cff947e824bc08e6e8ad9108f1177", async() => {
                 BeginContext(291, 7, true);
                 WriteLiteral("Головна");
                 EndContext();
@@ -99,7 +99,7 @@ using FactWorkflow.Models;
                         ");
             EndContext();
             BeginContext(742, 1631, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d71ca938a2be41479b4042c936ca6607", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f1a03e2b9b524b30a5c6a170f1cb0a7b", async() => {
                 BeginContext(774, 30, true);
                 WriteLiteral("\r\n                            ");
                 EndContext();
