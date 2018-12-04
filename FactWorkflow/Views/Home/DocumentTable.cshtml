@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Users";
     @model IEnumerable<FactWorkflow.Models.Resolve>;
+    int documentid = 0;
+
 }
 
 <div id="content-wrapper">
@@ -57,19 +59,35 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>@item.DId</td>
-                                <td>@item.UId</td>
-                                <td>@item.RAddress</td>
-                                <td>@item.RStatus</td>
-                                <td>@item.RStatus</td>
-                                <td>@item.RStatus</td>
-                                <td>@item.RStatus</td>
-                                <td>@item.RStatus</td>
-                                <td><a href="~/Home/ChangeStatus?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                                <td><a href="~/Home/AddResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                                <td><a href="~/Home/SendResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                            </tr>
+                                if (item.Document.DId == documentid)
+                                {
+                                    <tr>
+                                        <td colspan="5"></td>
+                                        <td>@item.RAddress</td>
+                                        <td>@item.RStatus</td>
+                                        <td></td>
+                                        <td><a href="~/Home/ChangeStatus?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                        <td><a href="~/Home/AddResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                        <td><a href="~/Home/SendResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    documentid = item.Document.DId;
+                                    <tr>
+                                        <td>@item.Document.DId</td>
+                                        <td>@item.Document.DIndex</td>
+                                        <td>@item.Document.DDate.ToString("dd.MM.yyyy")</td>
+                                        <td>@item.Document.DFrom</td>
+                                        <td>@item.Document.DAbout</td>
+                                        <td>@item.RAddress</td>
+                                        <td>@item.RStatus</td>
+                                        <td><a href="~/Home/Download/@item.Document.FId">@Html.DisplayFor(modelItem => item.Document.File.FName)</a></td>
+                                        <td><a href="~/Home/ChangeStatus?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                        <td><a href="~/Home/AddResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                        <td><a href="~/Home/SendResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                    </tr>
+                                }
                             }
                         </tbody>
                     </table>

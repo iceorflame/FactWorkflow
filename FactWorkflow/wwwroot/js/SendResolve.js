@@ -1,8 +1,10 @@
 ﻿var array = [];
 var docId;
+var rad;
 
 $(document).ready(function () {
     docId = getQueryVariable("did");
+    rad = $("#raddress").val();
     $("#cathedraUser").hide();
     $.ajax({
         type: "get",
@@ -13,7 +15,7 @@ $(document).ready(function () {
             }
             getUsers();
         },
-        error: function (data) { alert("ALERT") },
+        error: function (data) { alert("ALERT")},
     });
 });
 
@@ -61,7 +63,7 @@ function addResolution() {
             exists = true;
     }
     if (!exists) {
-        $("#arrUsers").find("> tbody:last-child").append("<tr><td>" + name + "</td><td><button id=" + name + " class=deleteButton type=button>Delete</button></td></tr>");
+        $("#arrUsers").find("> tbody:last-child").append("<tr><td>" + name + "</td><td><button id=" + name + " class=deleteButton type=button>Видалити</button></td></tr>");
         array.push(user);
     }
 }
@@ -97,6 +99,7 @@ function submit() {
         url: "/Home/SendResolve",
         data: {
             "docid": docId,
+            "ra": rad,
             "users": array
         },
         success: function () {

@@ -54,7 +54,7 @@
                             @Html.HiddenFor(model => model.DId)
                             <div class="form-group">
                                 <label>Резолюція</label>
-                                @Html.EditorFor(model => model.RAddress, new { htmlAttributes = new { @autocomplete = "off", @type = "text", @class = "form-control", @readonly = "true" } })
+                                @Html.EditorFor(model => model.RAddress, new { htmlAttributes = new { @autocomplete = "off", @id = "raddress", @type = "text", @class = "form-control", @readonly = "true" } })
                             </div>
                             <div class="form-group">
                                 <label>Посада/Відділ</label>

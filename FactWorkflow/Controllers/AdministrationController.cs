@@ -57,7 +57,7 @@ namespace FactWorkflow.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         public IActionResult UserTable()
         {
             ViewBag.Active = "usertable";
@@ -65,7 +65,7 @@ namespace FactWorkflow.Controllers
             return View(users.ToList());
         }
 
-
+        [Authorize(Roles = "admin")]
         public IActionResult DeleteUser(int? id)
         {
             User user = _context.Users.Find(id);
@@ -78,6 +78,7 @@ namespace FactWorkflow.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public IActionResult EditUser(int? id)
         {
             User user = _context.Users.Find(id);
@@ -91,6 +92,7 @@ namespace FactWorkflow.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public IActionResult EditUser(User user)
         {
             _context.Entry(user).State = EntityState.Modified;

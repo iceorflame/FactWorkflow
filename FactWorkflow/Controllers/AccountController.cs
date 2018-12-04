@@ -49,6 +49,11 @@ namespace FactWorkflow.Controllers
                 {
                     await Authenticate(user);
 
+                    if (user.UMail == "factworkflow@gmail.com")
+                    {
+                        return RedirectToAction("TokenTable", "Administration");
+                    }
+
                     return RedirectToAction("Index", "Home");
                 }
                     ModelState.AddModelError("", "Некорректные логин и(или) пароль");
