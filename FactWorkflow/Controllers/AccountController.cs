@@ -56,9 +56,9 @@ namespace FactWorkflow.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                
             }
-
+            ViewData["Message"] = "true";
             return View(model);
         }
 
