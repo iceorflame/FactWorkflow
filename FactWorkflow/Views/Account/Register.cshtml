@@ -4,6 +4,27 @@
 }
 
 <div class="container">
+    @if (ViewData["Message"] == "Token")
+    {
+        <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Увага!</strong> Неправильно введений ключ реєстрації.
+        </div>
+    }
+    else if (ViewData["Message"] == "User")
+    {
+        <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Увага!</strong> Дана електронна адреса вже використовується в системі.
+        </div>
+    }
+    else if (ViewData["Message"] == "Password")
+    {
+        <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Увага!</strong> Паролі не співпадають.
+        </div>
+    }
     <div class="card card-register mx-auto mt-5">
         <div class="card-header">Зареєструвати аккаунт</div>
         <div class="card-body">

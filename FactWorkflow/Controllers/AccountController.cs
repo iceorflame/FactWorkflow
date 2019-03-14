@@ -80,22 +80,31 @@ namespace FactWorkflow.Controllers
                     User user = await _context.Users.FirstOrDefaultAsync(u => u.UMail == model.Email);
                     if (user == null)
                     {
-                        _context.Users.Add(new User { UMail = model.Email, UPassword = MD5Hash(model.Password), UName = model.Name, RId = 2 });
-                        _context.Tokens.Remove(token);
-                        await _context.SaveChangesAsync();
+                        if (model.Password == model.ConfirmPassword)
+                        {
+                            _context.Users.Add(new User { UMail = model.Email, UPassword = MD5Hash(model.Password), UName = model.Name, RId = 2 });
+                            _context.Tokens.Remove(token);
+                            await _context.SaveChangesAsync();
 
-                        //EmailService emailService = new EmailService();
-                        //await emailService.SendEmailAsync(model.Email, "Вас вітає СЕД Факт!", "Ви зареєструвалися в системі електронного документообігу Факт.");
+                            //EmailService emailService = new EmailService();
+                            //await emailService.SendEmailAsync(model.Email, "Вас вітає СЕД Факт!", "Ви зареєструвалися в системі електронного документообігу Факт.");
 
-                        //await Authenticate(user);
+                            //await Authenticate(user);
 
-                        return RedirectToAction("Index", "Home");
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            ViewData["Message"] = "Password";
+                        }
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                        ViewData["Message"] = "User";
                     }
                 }
+                else
+                    ViewData["Message"] = "Token";
             }
             return View(model);
         }
