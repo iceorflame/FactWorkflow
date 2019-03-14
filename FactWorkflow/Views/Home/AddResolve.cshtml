@@ -25,6 +25,7 @@
                     <div class="col-lg-6">
                         <form role="form" enctype="multipart/form-data" method="post">
                             @Html.HiddenFor(model => model.DId)
+                            @Html.HiddenFor(model => model.UId)
                             <div class="form-group">
                                 <label asp-for="RAddress">Резолюція</label>
                                 <input asp-for="RAddress" class="form-control">

@@ -15,12 +15,6 @@ namespace FactWorkflow.Models
         public DbSet<File> Files { get; set; }
         public DbSet<Resolve> Resolves { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Resolve>()
-                .HasKey(c => new { c.DId, c.UId });
-        }
-
         public WorkflowContext(DbContextOptions<WorkflowContext> options)
             : base(options) { }
     }

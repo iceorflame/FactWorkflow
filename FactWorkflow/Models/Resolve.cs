@@ -8,6 +8,9 @@ namespace FactWorkflow.Models
 {
     public class Resolve
     {
+        [Key]
+        public int ResId { get; set; }
+
         public int? DId { get; set; }
         public Document Document { get; set; }
 

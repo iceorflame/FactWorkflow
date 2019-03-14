@@ -151,9 +151,9 @@ namespace FactWorkflow.Controllers
 
         [HttpGet]
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
-        public IActionResult AddResolve(int? did, int? uid)
+        public IActionResult AddResolve(int? resid)
         {
-            Resolve resolve = _context.Resolves.Find(did, uid);
+            Resolve resolve = _context.Resolves.Find(resid);
             resolve.RAddress = "";
             return View(resolve);
         }
@@ -162,19 +162,27 @@ namespace FactWorkflow.Controllers
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
         public IActionResult AddResolve(Resolve resolve)
         {
+            resolve.RStatus = "Резолюцію відправлено";
+
+            Resolve resolvenew = new Resolve();
             User user = _context.Users.FirstOrDefault(x => x.RId == 3);
-            resolve.UId = user.UId;
-            resolve.RStatus = "Очікує відправки";
-            _context.Resolves.Add(resolve);
+
+            resolvenew.DId = resolve.DId;
+            resolvenew.UId = user.UId;
+            resolvenew.RAddress = resolve.RAddress;
+            resolvenew.RStatus = "Очікує відправки";
+
+            _context.Entry(resolve).State = EntityState.Modified;
+            _context.Resolves.Add(resolvenew);
             _context.SaveChanges();
-            return RedirectToAction("DocumentTable","Home");
+            return RedirectToAction("DocumentTable", "Home");
         }
 
         [HttpGet]
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
-        public IActionResult SendResolve(int? did, int? uid)
+        public IActionResult SendResolve(int? resid)
         {
-            Resolve resolve = _context.Resolves.Find(did, uid);
+            Resolve resolve = _context.Resolves.Find(resid);
             return View(resolve);
         }
 
@@ -197,9 +205,6 @@ namespace FactWorkflow.Controllers
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
         public IActionResult SendResolve(int docid, string ra, DTOUser[] users)
         {
-            User user = _context.Users.FirstOrDefault(x => x.RId == 3);
-            Resolve r = _context.Resolves.Find(docid,user.UId);
-            _context.Entry(r).State = EntityState.Deleted;
 
             for (int i = 0; i < users.Length; i++)
             {

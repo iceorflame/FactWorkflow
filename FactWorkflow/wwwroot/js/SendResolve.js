@@ -1,9 +1,11 @@
-﻿var array = [];
+﻿"use strict";
+
+var array = [];
 var docId;
 var rad;
 
-$(document).ready(function () {
-    docId = getQueryVariable("did");
+document.addEventListener("DOMContentLoaded", function () {
+    //docId = document.getElementById("DId").val;
     rad = $("#raddress").val();
     $("#cathedraUser").hide();
     $.ajax({
@@ -15,7 +17,7 @@ $(document).ready(function () {
             }
             getUsers();
         },
-        error: function (data) { alert("ALERT")},
+        error: function (data) { alert("ALERT") },
     });
 });
 
@@ -94,11 +96,12 @@ function getQueryVariable(variable) {
 }
 
 function submit() {
+
     $.ajax({
         type: "POST",
         url: "/Home/SendResolve",
         data: {
-            "docid": docId,
+            "docid": document.getElementById("DId").value,
             "ra": rad,
             "users": array
         },
@@ -109,4 +112,29 @@ function submit() {
 
         },
     });
+
+    //let data = {
+    //    "docid": document.getElementById("DId").value,
+    //    "ra": rad,
+    //    "users": array
+    //};
+
+    //let options = {
+    //    method: "POST",
+    //    headers: {
+    //        "Content-Type": "application/json"
+    //    },
+    //    credentials: "same-origin",
+    //    body: JSON.stringify(data) 
+    //};
+    //fetch("/Home/SendResolve", options)
+    //    .then(response => {
+    //        if (response.status === 200) {
+    //            window.location = "DocumentTable";
+    //        }
+    //        else {
+    //            console.log(response);
+    //        }
+    //    })
+    //    .catch(error => console.log(error));
 }
