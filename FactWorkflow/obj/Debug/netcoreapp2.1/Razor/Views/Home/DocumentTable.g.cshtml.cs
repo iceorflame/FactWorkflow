@@ -67,7 +67,7 @@ using FactWorkflow.Models;
             WriteLiteral("\r\n<div id=\"content-wrapper\">\r\n\r\n    <div class=\"container-fluid\">\r\n\r\n        <!-- Breadcrumbs-->\r\n        <ol class=\"breadcrumb\">\r\n            <li class=\"breadcrumb-item\">\r\n                ");
             EndContext();
             BeginContext(311, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2c63d15fc69a4c52a24ce33923bfeee3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fb2f641f5254f8ba89af869bf5c4ac5", async() => {
                 BeginContext(334, 7, true);
                 WriteLiteral("Головна");
                 EndContext();
@@ -270,7 +270,7 @@ using FactWorkflow.Models;
             WriteLiteral("</td>\r\n                                        <td>");
             EndContext();
             BeginContext(3650, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "11c3a6c174e745bfa86e1439a0b1477b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "62aba77577d1425ab4bd8bc6c24f975b", async() => {
                 BeginContext(3696, 54, false);
 #line 84 "D:\Sandbox\FactWorkflow\FactWorkflow\Views\Home\DocumentTable.cshtml"
                                                                                     Write(Html.DisplayFor(modelItem => item.Document.File.FName));
@@ -311,7 +311,7 @@ AddHtmlAttributeValue("", 3675, item.Document.FId, 3675, 18, false);
             WriteLiteral("                                        <td align=\"center\">");
             EndContext();
             BeginContext(3960, 112, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b3fc84581ed94d5a9c6a7f3be2e7d254", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c965c6ba5bb8453190d26050245b2f99", async() => {
                 BeginContext(4016, 52, true);
                 WriteLiteral("<i class=\"fa fa-plus bigger-130 padding-2 grey\"></i>");
                 EndContext();

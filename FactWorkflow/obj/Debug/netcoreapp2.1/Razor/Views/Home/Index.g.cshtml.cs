@@ -61,7 +61,7 @@ using FactWorkflow.Models;
             WriteLiteral("\r\n<div id=\"content-wrapper\">\r\n\r\n    <div class=\"container-fluid\">\r\n\r\n        <!-- Breadcrumbs-->\r\n        <ol class=\"breadcrumb\">\r\n            <li class=\"breadcrumb-item\">\r\n                ");
             EndContext();
             BeginContext(284, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "06d6811939e64a3fb4be3236668f9955", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c06f8e86785646338071e2b78dec05dd", async() => {
                 BeginContext(307, 7, true);
                 WriteLiteral("Головна");
                 EndContext();
@@ -210,7 +210,7 @@ using FactWorkflow.Models;
             WriteLiteral("                                    <td align=\"center\">");
             EndContext();
             BeginContext(2618, 103, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3d23a45cadfc431490f4a9e23a65568a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "280ecde7fa8e4c2ea5b4e8e1b6369243", async() => {
                 BeginContext(2665, 52, true);
                 WriteLiteral("<i class=\"fa fa-plus bigger-130 padding-2 grey\"></i>");
                 EndContext();
@@ -248,7 +248,7 @@ AddHtmlAttributeValue("", 2652, item.ResId, 2652, 11, false);
             WriteLiteral("                                    <td align=\"center\">");
             EndContext();
             BeginContext(2920, 102, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b9f3e5c904884778861ab7a425647bab", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4eb0fb041824d6fa6863fd8724ce882", async() => {
                 BeginContext(2966, 52, true);
                 WriteLiteral("<i class=\"fa fa-plus bigger-130 padding-2 grey\"></i>");
                 EndContext();
@@ -286,7 +286,7 @@ AddHtmlAttributeValue("", 2953, item.ResId, 2953, 11, false);
             WriteLiteral("                                    <td align=\"center\">");
             EndContext();
             BeginContext(3192, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e72ec3ec3348818e1978d789d8a82f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "56a954a8ac4f47319d13eb143ba9e4d5", async() => {
                 BeginContext(3240, 52, true);
                 WriteLiteral("<i class=\"fa fa-plus bigger-130 padding-2 grey\"></i>");
                 EndContext();

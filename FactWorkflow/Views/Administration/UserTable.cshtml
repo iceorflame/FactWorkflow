@@ -45,13 +45,15 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>@item.UName</td>
-                                <td>@item.UMail</td>
-                                <td>@Html.DisplayFor(modelItem => item.Role.RAlterName)</td>
-                                <td align="center"><a href="~/Administration/DeleteUser/@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                                <td align="center"><a href="~/Administration/EditUser/@item.UId"><i class="fa fa-pen bigger-130 padding-2 grey"></i></a></td>
-                            </tr>
+                                <tr>
+                                    <td>@item.UName</td>
+                                    <td>@item.UMail</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Role.RAlterName)</td>
+                                    <!--- <td align="center"><a href="~/Administration/DeleteUser/@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+            <td align="center"><a href="~/Administration/EditUser/@item.UId"><i class="fa fa-pen bigger-130 padding-2 grey"></i></a></td> --->
+                                    <td align="center"><a href="#" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                    <td align="center"><a href="~/Administration/EditUser/@item.UId"><i class="fa fa-pen bigger-130 padding-2 grey"></i></a></td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -71,5 +73,26 @@
         </div>
     </footer>
 
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ви дійсно бажаєте видалити користувача?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Виберіть "Видалити" для того, щоб підтвердити дію.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Відміна</button>
+                    <a class="btn btn-danger" href="#">Видалити</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
 </div>
 <!-- /.content-wrapper -->

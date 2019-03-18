@@ -95,7 +95,7 @@ namespace FactWorkflow.Controllers
             _context.Documents.Add(document);
             _context.SaveChanges();
 
-            if(uploadFile != null)
+            if (uploadFile != null)
             {
                 byte[] imageData = null;
                 using (var binaryReader = new BinaryReader(uploadFile.OpenReadStream()))
@@ -108,6 +108,11 @@ namespace FactWorkflow.Controllers
                 _context.Files.Add(file);
                 document.FId = file.FId;
             }
+            else {
+                ViewData["Message"] = "File";
+                return View();
+            }
+
             document.DDate = DateTime.Now;
             document.DIndex = document.DId+"/"+classification+"/1.9";
             _context.Entry(document).State = EntityState.Modified;
@@ -119,6 +124,7 @@ namespace FactWorkflow.Controllers
             resolve.RStatus = "На підтвердженні у ректора";
             _context.Resolves.Add(resolve);
             _context.SaveChanges();
+            //ViewData["Message"] = "Text";
 
             return RedirectToAction("DocumentTable","Home");
         }

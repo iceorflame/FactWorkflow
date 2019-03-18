@@ -4,7 +4,7 @@
 }
 
 <div id="content-wrapper">
-
+    
     <div class="container-fluid">
 
         <!-- Breadcrumbs-->
@@ -14,6 +14,21 @@
             </li>
             <li class="breadcrumb-item active">Додати документ</li>
         </ol>
+
+        @if (ViewData["Message"] == "File")
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Увага!</strong> Прикріпіть, будь ласка, документ.
+            </div>
+        }
+        else if (ViewData["Message"] == "Text")
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Увага!</strong> Дана електронна адреса вже використовується в системі.
+            </div>
+        }
 
         <div class="card mb-3">
             <div class="card-header">
