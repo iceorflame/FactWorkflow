@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Tokens";
-    @model FactWorkflow.Models.Document;
+    @model FactWorkflow.Models.AddDocument;
 }
 
 <div id="content-wrapper">
@@ -22,11 +22,18 @@
                 <strong>Увага!</strong> Прикріпіть, будь ласка, документ.
             </div>
         }
+        else if (ViewData["Message"] == "Rector")
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Увага!</strong> Не знайдено користувача з роллю Ректор.
+            </div>
+        }
         else if (ViewData["Message"] == "Text")
         {
             <div class="alert alert-danger alert-dismissible">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Увага!</strong> Дана електронна адреса вже використовується в системі.
+                <strong>Увага!</strong> Дані введені некоректно.
             </div>
         }
 
@@ -59,12 +66,12 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label asp-for="DFrom">Кореспондент</label>
-                                <input asp-for="DFrom" class="form-control">
+                                <label asp-for="DocumentFrom">Кореспондент</label>
+                                <input asp-for="DocumentFrom" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label asp-for="DAbout">Короткий зміст</label>
-                                <textarea asp-for="DAbout" class="form-control" rows="3"></textarea>
+                                <label asp-for="DocumentAbout">Короткий зміст</label>
+                                <textarea asp-for="DocumentAbout" class="form-control" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Завантажити файл</label>

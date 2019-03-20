@@ -90,41 +90,61 @@ namespace FactWorkflow.Controllers
 
         [HttpPost]
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
-        public IActionResult AddDocument(Document document, Models.File file, Resolve resolve, IFormFile uploadFile, int classification)
+        public IActionResult AddDocument(AddDocument addDocument, Document document, Models.File file, Resolve resolve, IFormFile uploadFile, int classification)
         {
-            _context.Documents.Add(document);
-            _context.SaveChanges();
 
             if (uploadFile != null)
             {
-                byte[] imageData = null;
-                using (var binaryReader = new BinaryReader(uploadFile.OpenReadStream()))
+                User user = _context.Users.FirstOrDefault(u => u.RId == 4);
+                if(user != null)
                 {
-                    imageData = binaryReader.ReadBytes((int)uploadFile.Length);
+                    if (ModelState.IsValid)
+                    {
+                        document.DAbout = addDocument.DocumentAbout;
+                        document.DFrom = addDocument.DocumentFrom;
+                        _context.Documents.Add(document);
+                        _context.SaveChanges();
+
+                        byte[] imageData = null;
+                        using (var binaryReader = new BinaryReader(uploadFile.OpenReadStream()))
+                        {
+                            imageData = binaryReader.ReadBytes((int)uploadFile.Length);
+                        }
+                        file.FByte = imageData;
+                        file.FName = uploadFile.FileName;
+                        file.FType = uploadFile.ContentType;
+                        _context.Files.Add(file);
+
+                        document.FId = file.FId;
+                        document.DDate = DateTime.Now;
+                        document.DIndex = document.DId + "/" + classification + "/1.9";
+                        _context.Entry(document).State = EntityState.Modified;
+
+                        resolve.DId = document.DId;
+                        resolve.UId = user.UId;
+                        resolve.RAddress = user.UName;
+                        resolve.RStatus = "На підтвердженні у ректора";
+                        _context.Resolves.Add(resolve);
+                        _context.SaveChanges();
+                    }
+                    else
+                    {
+                        ViewData["Message"] = "Text";
+                        return View();
+                    }
+
                 }
-                file.FByte = imageData;
-                file.FName = uploadFile.FileName;
-                file.FType = uploadFile.ContentType;
-                _context.Files.Add(file);
-                document.FId = file.FId;
+                else
+                {
+                    ViewData["Message"] = "Rector";
+                    return View();
+                }
+
             }
             else {
                 ViewData["Message"] = "File";
                 return View();
             }
-
-            document.DDate = DateTime.Now;
-            document.DIndex = document.DId+"/"+classification+"/1.9";
-            _context.Entry(document).State = EntityState.Modified;
-
-            resolve.DId = document.DId;
-            User user = _context.Users.FirstOrDefault(u => u.RId == 4);
-            resolve.UId = user.UId;
-            resolve.RAddress = user.UName;
-            resolve.RStatus = "На підтвердженні у ректора";
-            _context.Resolves.Add(resolve);
-            _context.SaveChanges();
-            //ViewData["Message"] = "Text";
 
             return RedirectToAction("DocumentTable","Home");
         }
