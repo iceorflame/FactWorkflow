@@ -26,34 +26,37 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th width="1%">№</thwidth="8%">
                                 <th>Ім'я</th>
                                 <th>Пошта</th>
                                 <th>Роль</th>
-                                <th></th>
-                                <th></th>
+                                <th width="8%"> </th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Ім'я</th>
-                                <th>Пошта</th>
-                                <th>Роль</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>@item.UName</td>
-                                    <td>@item.UMail</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Role.RAlterName)</td>
-                                    <!--- <td align="center"><a href="~/Administration/DeleteUser/@item.UId"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                                    <td align="center"><a href="~/Administration/EditUser/@item.UId"><i class="fa fa-pen bigger-130 padding-2 grey"></i></a></td> --->
-                                    <td align="center"><a data-toggle="modal" href="#deleteModal" id="@item.UId" onclick="openModal(this)"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                                    <td align="center"><a href="~/Administration/EditUser/@item.UId"><i class="fa fa-pen bigger-130 padding-2 grey"></i></a></td>
-                                </tr>
+                            <tr>
+                                <td>@item.UId</td>
+                                <td>@item.UName</td>
+                                <td>@item.UMail</td>
+                                <td>@Html.DisplayFor(modelItem => item.Role.RAlterName)</td>
+                                <!--- <td align="center"><a data-toggle="modal" href="#deleteModal" id="@item.UId" onclick="openModal(this)"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                <td align="center"><a href="~/Administration/EditUser/@item.UId"><i class="fa fa-pen bigger-130 padding-2 grey"></i></a></td> --->
+                                <td align="center">
+                                    <div class="btn-group-vertical">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
+                                                Керування
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="~/Administration/EditUser/@item.UId">Редагувати</a>
+                                                <a class="dropdown-item" data-toggle="modal" href="#deleteModal" id="@item.UId" onclick="openModal(this)">Видалити</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
