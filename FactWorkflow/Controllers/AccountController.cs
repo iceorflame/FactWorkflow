@@ -91,7 +91,7 @@ namespace FactWorkflow.Controllers
 
                             //await Authenticate(user);
 
-                            return RedirectToAction("Index", "Home");
+                            return RedirectToAction("Login", "Account");
                         }
                         else
                         {
@@ -106,6 +106,8 @@ namespace FactWorkflow.Controllers
                 else
                     ViewData["Message"] = "Token";
             }
+            else
+                ViewData["Message"] = "Text";
             return View(model);
         }
 
