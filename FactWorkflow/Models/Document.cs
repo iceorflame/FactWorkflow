@@ -18,11 +18,13 @@ namespace FactWorkflow.Models
         public int? FId { get; set; }
         public File File { get; set; }
 
+        public List<History> Histories { get; set; }
         public List<Resolve> Resolves { get; set; }
 
         public Document()
         {
             Resolves = new List<Resolve>();
+            Histories = new List<History>();
         }
     }
 }

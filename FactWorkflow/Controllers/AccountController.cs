@@ -49,7 +49,8 @@ namespace FactWorkflow.Controllers
                 {
                     await Authenticate(user);
 
-                    if (user.UMail == "factworkflow@gmail.com")
+                    //if (user.UMail == "factworkflow@gmail.com")
+                    if(HttpContext.User.IsInRole("admin"))
                     {
                         return RedirectToAction("TokenTable", "Administration");
                     }

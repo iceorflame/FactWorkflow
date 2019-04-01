@@ -9,15 +9,14 @@ namespace FactWorkflow.Models
     public class Resolve
     {
         [Key]
-        public int ResId { get; set; }
+        public int RId { get; set; }
 
-        public int? DId { get; set; }
+        public int DId { get; set; }
         public Document Document { get; set; }
 
-        public int? UId { get; set; }
-        public User User { get; set; }
+        public string RText { get; set; }
 
-        public string RAddress { get; set; }
-        public string RStatus { get; set; }
+        public int? SId { get; set; }
+        public Status Status { get; set; }
     }
 }

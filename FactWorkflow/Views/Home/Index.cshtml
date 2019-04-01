@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Users";
-    @model IEnumerable<FactWorkflow.Models.Resolve>;
+    @model IEnumerable<FactWorkflow.Models.History>;
 }
 
 <div id="content-wrapper">
@@ -33,6 +33,7 @@
                                 <th>Зміст</th>
                                 <th>Статус</th>
                                 <th>Адресат</th>
+                                <th>Документ</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -45,6 +46,7 @@
                                 <th>Зміст</th>
                                 <th>Статус</th>
                                 <th>Адресат</th>
+                                <th>Документ</th>
                                 <th></th>
                             </tr>
                         </tfoot>
@@ -57,19 +59,20 @@
                                     <td>@item.Document.DDate.ToString("dd.MM.yyyy")</td>
                                     <td>@item.Document.DFrom</td>
                                     <td>@item.Document.DAbout</td>
-                                    <td>@item.RStatus</td>
-                                    <td>@item.RAddress</td>
+                                    <td>@item.Status.SName</td>
+                                    <td>@item.HAddress</td>
+                                    <td><a href="~/Home/Download/@item.Document.FId">@Html.DisplayFor(modelItem => item.Document.File.FName)</a></td>
                                     @if (User.IsInRole("office"))
                                     {
-                                        <td align="center"><a href="~/Home/SendResolve?resid=@item.ResId"><i class="fa fa-plus bigger-130 padding-2 grey"></i></a></td>
+                                        <td align="center"><a href="~/Home/SendResolve?resid=@item.DId"><i class="fa fa-plus bigger-130 padding-2 grey"></i></a></td>
                                     }
                                     else if (User.IsInRole("rector"))
                                     {
-                                        <td align="center"><a href="~/Home/AddResolve?resid=@item.ResId"><i class="fa fa-plus bigger-130 padding-2 grey"></i></a></td>
+                                        <td align="center"><a href="~/Home/AddResolve?hid=@item.Hid"><i class="fa fa-plus bigger-130 padding-2 grey"></i></a></td>
                                     }
                                     else
                                     {
-                                        <td align="center"><a href="~/Home/ChangeStatus?resid=@item.ResId"><i class="fa fa-plus bigger-130 padding-2 grey"></i></a></td>
+                                        <td align="center"><a href="~/Home/ChangeStatus?resid=@item.DId"><i class="fa fa-plus bigger-130 padding-2 grey"></i></a></td>
                                     }
                                 </tr>
                             }

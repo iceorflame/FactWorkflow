@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Tokens";
-    @model FactWorkflow.Models.Resolve;
+    @model FactWorkflow.Models.SendResolve;
 }
 
 <div id="content-wrapper">
@@ -26,16 +26,29 @@
                             <tr>
                                 <th>ПІБ</th>
                                 <th>Тип</th>
+                                <th>Виконати до</th>
                                 <th>Відповідальний</th>
                                 <th>Оригінал?</th>
                                 <th></th>
                             </tr>
                         </thead>
+                        <tbody>
+                            @foreach (var item in Model.Histories)
+                            {
+                                <tr>
+                                    <td>@item.HAddress</td>
+                                    <td>@item.Type.TName</td>
+                                    <td>@item.HDate.Value.ToString("dd.MM.yyyy")</td>
+                                    <td>@item.HResponsible</td>
+                                    <td>@item.HOriginal</td>
+                                    <td></td>
+                                </tr>
+                            }
+                        </tbody>
                     </table>
-                    <button class="btn btn-default" onclick="submit()">Відправити</button>
                 </div>
             </div>
-               
+
         </div>
         <div class="card mb-3">
             <div class="card-header">
@@ -45,44 +58,46 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <div class="col-lg-6">
-                        @Html.HiddenFor(model => model.DId)
-                        <div class="form-group">
-                            <label>Резолюція</label>
-                            @Html.EditorFor(model => model.RAddress, new { htmlAttributes = new { @autocomplete = "off", @id = "raddress", @type = "text", @class = "form-control", @readonly = "true" } })
-                        </div>
-                        <div class="form-group">
-                            <div class="radio">
-                                <label><input type="radio" id="toObserve" name="optradio" onclick="showAdditionalFields()" checked>На ознайомлення</label>
+                        <form role="form" enctype="multipart/form-data" method="post">
+                            @Html.HiddenFor(model => model.Resolve.DId)
+                            <div class="form-group">
+                                <label>Резолюція</label>
+                                @Html.EditorFor(model => model.Resolve.RText, new { htmlAttributes = new { @autocomplete = "off", @id = "raddress", @type = "text", @class = "form-control", @readonly = "true" } })
                             </div>
-                            <div class="radio">
-                                <label><input type="radio" id="toDo" name="optradio" onclick="showAdditionalFields()">На виконання</label>
+                            <div class="form-group">
+                                <div class="radio">
+                                    <label><input type="radio" id="toObserve" name="optradio" value="1" onclick="showAdditionalFields()" checked>На ознайомлення</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" id="toDo" name="optradio" value="2" onclick="showAdditionalFields()">На виконання</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group" id="endDate" hidden="true">
-                            <label>Кінцева дата виконання</label>
-                            <input class="form-control" type="date">
-                        </div>
-                        <div class="form-group">
-                            <label>Посада/Відділ</label>
-                            <select  class="form-control" name="roleSelect" onchange="getUsers()"></select>
-                        </div>
-                        <div class="form-group">
-                            <label>Виконавець/Кафедра</label>
-                            <select class="form-control" name="userSelect"></select>
-                        </div>
-                        <div id="cathedraUser" name="cathedraUser" class="form-group">
-                            <label>ПІБ</label>
-                            <input class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <div class="checkbox">
-                                <label><input type="checkbox" value="">Оригінал?</label>
+                            <div class="form-group" id="endDate" hidden="true">
+                                <label>Кінцева дата виконання</label>
+                                <input class="form-control" type="date" name="dateSelect">
                             </div>
-                            <div class="checkbox" id="responsible" hidden="true">
-                                <label><input type="checkbox" value="">Відповідальний за виконання документу</label>
+                            <div class="form-group">
+                                <label>Посада/Відділ</label>
+                                <select class="form-control" id="roleSelect" name="roleSelect" onchange="setUsers(this)"></select>
                             </div>
-                        </div>
-                        <button class="btn btn-default" onclick="addResolution()">Додати виконавця</button>
+                            <div class="form-group">
+                                <label>Виконавець/Кафедра</label>
+                                <select class="form-control" id="userSelect" name="userSelect"></select>
+                            </div>
+                            <div id="cathedraUser" hidden="true" name="cathedraUser" class="form-group">
+                                <label>ПІБ</label>
+                                <input id="userName" name="userName" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name="rOriginal" value="">Оригінал?</label>
+                                </div>
+                                <div class="checkbox" id="responsible" hidden="true">
+                                    <label><input type="checkbox" name="rResponsible" value="">Відповідальний за виконання документу</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-default">Додати виконавця</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -102,4 +117,3 @@
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/js/ShowFieldsResolve.js"></script>
-<!-- <script src="~/js/SendResolve.js"></script> -->

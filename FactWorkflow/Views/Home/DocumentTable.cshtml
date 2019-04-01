@@ -65,8 +65,8 @@
                                 {
                                     <tr>
                                         <td colspan="5"></td>
-                                        <td>@item.RAddress</td>
-                                        <td>@item.RStatus</td>
+                                        @*<td>@item.RAddress</td>*@
+                                        @*<td>@item.RStatus</td>*@
                                         <td colspan="2"></td>
                                     </tr>
                                 }
@@ -79,12 +79,12 @@
                                         <td>@item.Document.DDate.ToString("dd.MM.yyyy")</td>
                                         <td>@item.Document.DFrom</td>
                                         <td>@item.Document.DAbout</td>
-                                        <td>@item.RAddress</td>
-                                        <td>@item.RStatus</td>
+                                        @*<td>@item.RAddress</td>*@
+                                        @*<td>@item.RStatus</td>*@
                                         <td><a href="~/Home/Download/@item.Document.FId">@Html.DisplayFor(modelItem => item.Document.File.FName)</a></td>
                                         @if(User.IsInRole("vrector") || User.IsInRole("dean")) 
                                         {
-                                        <td align="center"><a href="~/Home/AddResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-plus bigger-130 padding-2 grey"></i></a></td>
+                                        @*<td align="center"><a href="~/Home/AddResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-plus bigger-130 padding-2 grey"></i></a></td>*@
                                         }
                                     </tr>
                                 }

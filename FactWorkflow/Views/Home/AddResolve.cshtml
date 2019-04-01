@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Tokens";
-    @model FactWorkflow.Models.Resolve;
+    @model FactWorkflow.Models.AddResolve;
 }
 
 <div id="content-wrapper">
@@ -24,11 +24,14 @@
                 <div class="table-responsive">
                     <div class="col-lg-6">
                         <form role="form" enctype="multipart/form-data" method="post">
-                            @Html.HiddenFor(model => model.DId)
-                            @Html.HiddenFor(model => model.UId)
+                            @Html.HiddenFor(model => model.History.DId)
+                            @Html.HiddenFor(model => model.History.Hid)
+                            @Html.HiddenFor(model => model.History.HAddress)
+                            @Html.HiddenFor(model => model.History.UId)
+                            @Html.HiddenFor(model => model.History.TId)
                             <div class="form-group">
-                                <label asp-for="RAddress">Резолюція</label>
-                                <textarea asp-for="RAddress" class="form-control"></textarea>
+                                <label asp-for="Resolve.RText">Резолюція</label>
+                                <textarea asp-for="Resolve.RText" class="form-control"></textarea>
                             </div>
                             <button type="submit" class="btn btn-default">Додати резолюцію</button>
                         </form>

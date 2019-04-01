@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using FactWorkflow.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using FactWorkflow.Services;
 
 namespace FactWorkflow
 {
@@ -42,6 +43,10 @@ namespace FactWorkflow
                     options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
                     //options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Home/About");
                 });
+
+
+            services.AddHostedService<TimedHostedService>();
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
