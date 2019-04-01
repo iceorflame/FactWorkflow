@@ -211,3 +211,4 @@ D:\Sandbox\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.dll
 D:\Sandbox\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.pdb
 D:\Sandbox\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\FactWorkflow.csproj.CopyComplete
 D:\Sandbox\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\Office.g.cshtml.cs
+D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\Office.g.cshtml.cs
