@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Users";
-    @model IEnumerable<FactWorkflow.Models.History>;
+    @model IEnumerable<FactWorkflow.Models.Resolve>;
 }
 
 <div id="content-wrapper">
@@ -32,24 +32,11 @@
                                 <th>Кореспондент</th>
                                 <th>Зміст</th>
                                 <th>Статус</th>
-                                <th>Адресат</th>
+                                <th>Текст резолюції</th>
                                 <th>Документ</th>
-                                <th></th>
+                                <th width="8%"></th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>№</th>
-                                <th>Індекс</th>
-                                <th>Дата</th>
-                                <th>Кореспондент</th>
-                                <th>Зміст</th>
-                                <th>Статус</th>
-                                <th>Адресат</th>
-                                <th>Документ</th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
                         <tbody>
                             @foreach (var item in Model)
                             {
@@ -60,28 +47,21 @@
                                 <td>@item.Document.DFrom</td>
                                 <td>@item.Document.DAbout</td>
                                 <td>@item.Status.SName</td>
-                                <td>@item.HAddress</td>
+                                <td>@item.RText</td>
                                 <td><a href="~/Home/Download/@item.Document.FId">@Html.DisplayFor(modelItem => item.Document.File.FName)</a></td>
-                                @if (User.IsInRole("rector"))
-                                {
-                                    <td align="center">
-                                        <div class="btn-group-vertical">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
-                                                    Керування
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="~/Home/AddResolve?hid=@item.Hid">Написати резолюцію</a>
-                                                    <a class="dropdown-item">Назва 1</a>
-                                                </div>
+                                <td align="center">
+                                    <div class="btn-group-vertical">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
+                                                Керування
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="~/Home/SendResolve?resid=@item.RId">Назначити осіб</a>
+                                                <a class="dropdown-item" href="~/Home/ConfirmResolve?rid=@item.RId">Підтвердити призначення</a>
                                             </div>
                                         </div>
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td align="center"><a href="~/Home/ChangeStatus?resid=@item.DId"><i class="fa fa-plus bigger-130 padding-2 grey"></i></a></td>
-                                }
+                                    </div>
+                                </td>
                             </tr>
                             }
                         </tbody>

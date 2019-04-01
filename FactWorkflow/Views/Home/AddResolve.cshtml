@@ -18,13 +18,47 @@
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
+                Інформація про документ
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                            <tr>
+                                <th width="15%">Номер документа</th>
+                                <td>@Html.DisplayFor(model => model.History.DId)</td>
+                            </tr>
+                            <tr>
+                                <th width="15%">Індекс</th>
+                                <td>@Html.DisplayFor(model => model.History.Document.DIndex)</td>
+                            </tr>
+                            <tr>
+                                <th width="15%">Дата отримання</th>
+                                <td>@Html.Raw(Model.History.Document.DDate.ToString("dd.MM.yyyy"))</td>
+                            </tr>
+                            <tr>
+                                <th width="15%">Коресподент</th>
+                                <td>@Html.DisplayFor(model => model.History.Document.DFrom)</td>
+                            </tr>
+                            <tr>
+                                <th width="15%">Короткий зміст</th>
+                                <td>@Html.DisplayFor(model => model.History.Document.DAbout)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
                 Резолюція
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <div class="col-lg-6">
                         <form role="form" enctype="multipart/form-data" method="post">
-                            @Html.HiddenFor(model => model.History.DId)
                             @Html.HiddenFor(model => model.History.Hid)
                             @Html.HiddenFor(model => model.History.HAddress)
                             @Html.HiddenFor(model => model.History.UId)

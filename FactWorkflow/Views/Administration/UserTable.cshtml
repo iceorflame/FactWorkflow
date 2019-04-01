@@ -36,27 +36,27 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>@item.UId</td>
-                                <td>@item.UName</td>
-                                <td>@item.UMail</td>
-                                <td>@Html.DisplayFor(modelItem => item.Role.RAlterName)</td>
-                                <!--- <td align="center"><a data-toggle="modal" href="#deleteModal" id="@item.UId" onclick="openModal(this)"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
-                                <td align="center"><a href="~/Administration/EditUser/@item.UId"><i class="fa fa-pen bigger-130 padding-2 grey"></i></a></td> --->
-                                <td align="center">
-                                    <div class="btn-group-vertical">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
-                                                Керування
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="~/Administration/EditUser/@item.UId">Редагувати</a>
-                                                <a class="dropdown-item" data-toggle="modal" href="#deleteModal" id="@item.UId" onclick="openModal(this)">Видалити</a>
+                                <tr>
+                                    <td>@item.UId</td>
+                                    <td>@item.UName</td>
+                                    <td>@item.UMail</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Role.RAlterName)</td>
+                                    <!--- <td align="center"><a data-toggle="modal" href="#deleteModal" id="@item.UId" onclick="openModal(this)"><i class="fa fa-trash bigger-130 padding-2 grey"></i></a></td>
+                                    <td align="center"><a href="~/Administration/EditUser/@item.UId"><i class="fa fa-pen bigger-130 padding-2 grey"></i></a></td> --->
+                                    <td align="center">
+                                        <div class="btn-group-vertical">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
+                                                    Керування
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="~/Administration/EditUser/@item.UId">Редагувати</a>
+                                                    <a class="dropdown-item" data-toggle="modal" href="#deleteModal" id="@item.UId" onclick="openModal(this)">Видалити</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -77,25 +77,26 @@
     </footer>
 
     <div style="display:none;" id="modalWrapper">
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ви дійсно бажаєте видалити користувача?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Виберіть "Видалити" для того, щоб підтвердити дію.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Відміна</button>
-                    <a class="btn btn-danger" id="deleteButton" href="~/Administration/DeleteUser/">Видалити</a>
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ви дійсно бажаєте видалити користувача?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Виберіть "Видалити" для того, щоб підтвердити дію.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Відміна</button>
+                        <a class="btn btn-danger" id="deleteButton" href="~/Administration/DeleteUser/">Видалити</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 
     <script src="~/js/UserTable.js"></script>
+    <script src="~/js/tableLanguage.js"></script>
 </div>
 <!-- /.content-wrapper -->

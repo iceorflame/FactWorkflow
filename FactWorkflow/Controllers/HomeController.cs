@@ -45,8 +45,7 @@ namespace FactWorkflow.Controllers
             }
             else if (HttpContext.User.IsInRole("office"))
             {
-                var document1 = _context.Histories.Where(r => r.SId == 2).Include(d => d.Document.File).Include(s => s.Status).Include(t => t.Type);
-                return View(document1);
+                return RedirectToAction("Office", "Home");
             }
             else if (HttpContext.User.IsInRole("rector"))
             {
@@ -55,6 +54,15 @@ namespace FactWorkflow.Controllers
             }
             //var documents = _context.Resolves.Where(r => r.RStatus == "Не переглянуто" && r.User.UMail == HttpContext.User.Identity.Name).Include(d => d.Document);
             return View();
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "office,rector,vrector,dean,cathedra,admin")]
+        public IActionResult Office()
+        {
+            ViewBag.Active = "Index";
+            var documents = _context.Resolves.Include(d => d.Document.File).Include(s => s.Status).Where(s => s.SId == 3);
+            return View(documents);
         }
 
         [HttpGet]
@@ -186,7 +194,7 @@ namespace FactWorkflow.Controllers
         {
             //Resolve resolve = _context.Resolves.Find(resid);
             //resolve.RAddress = "";
-            History history = _context.Histories.Find(hid);
+            History history = _context.Histories.Include(d => d.Document).FirstOrDefault(h => h.Hid == hid);
             Resolve resolve = new Resolve();
             AddResolve addResolve = new AddResolve { History=history, Resolve = resolve };
             return View(addResolve);
@@ -262,6 +270,15 @@ namespace FactWorkflow.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult ConfirmResolve(int rid)
+        {
+            Resolve resolve = _context.Resolves.Find(rid);
+            resolve.SId = 4;
+            _context.Entry(resolve).State = EntityState.Modified;
+            _context.SaveChanges();
+            return RedirectToAction("Office", "Home");
         }
 
         
