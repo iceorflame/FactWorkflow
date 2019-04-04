@@ -29,7 +29,7 @@
                                 <th>Виконати до</th>
                                 <th>Відповідальний</th>
                                 <th>Оригінал?</th>
-                                <th></th>
+                                <th width="8%"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,15 +40,41 @@
                                 <td>@item.Type.TName</td>
                                 @if (item.HDate != null)
                                 {
-                                    <td>@item.HDate.Value.ToString("dd.MM.yyyy")</td>
+                                    <td align="center">@item.HDate.Value.ToString("dd.MM.yyyy")</td>
                                 }
                                 else
                                 {
-                                    <td></td>
+                                    <td align="center"><i class="fa fa-times"></i></td>
                                 }
-                                <td>@item.HResponsible</td>
-                                <td>@item.HOriginal</td>
-                                <td></td>
+                                @if (item.HResponsible == true)
+                                {
+                                    <td align="center"><i class="fa fa-check"></i></td>
+                                }
+                                else
+                                {
+                                    <td align="center"><i class="fa fa-times"></i></td>
+                                }
+                                @if (item.HOriginal == true)
+                                {
+                                    <td align="center"><i class="fa fa-check"></i></td>
+                                }
+                                else
+                                {
+                                    <td align="center"><i class="fa fa-times"></i></td>
+                                }
+                                <td>
+                                    <div class="btn-group-vertical">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
+                                                Керування
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="~/Home/DeleteHistory?hid=@item.Hid&rid=@Model.Resolve.RId">Видалити</a>
+                                              <!--  <a class="dropdown-item" href="">Дія 1</a> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                             }
                         </tbody>
@@ -124,3 +150,4 @@
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/js/ShowFieldsResolve.js"></script>
+<script src="~/js/tableLanguage.js"></script>

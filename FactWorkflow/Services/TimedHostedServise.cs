@@ -33,19 +33,19 @@ namespace FactWorkflow.Services
         {
             if ((DateTime.Now.Hour >= 0) && (DateTime.Now.Hour <= 1))
             {
-                //using (var scope = scopeFactory.CreateScope())
-                //{
-                //    var _context = scope.ServiceProvider.GetRequiredService<WorkflowContext>();
-                //    var resolveList = _context.Resolves.Include(t => t.Type).Where(r => r.TypId == 2);
-                //    foreach (var item in resolveList)
-                //    {
-                //        if (item.RDate >= DateTime.Now.Date)
-                //        {
-                //            item.SId = 9;
-                //        }
-                //    }
-                //    _context.SaveChanges();
-                //}
+                using (var scope = scopeFactory.CreateScope())
+                {
+                    var _context = scope.ServiceProvider.GetRequiredService<WorkflowContext>();
+                    var resolveList = _context.Histories.Include(t => t.Type).Where(r => r.TId == 2);
+                    foreach (var item in resolveList)
+                    {
+                        if ((item.HDate >= DateTime.Now.Date) && (item.SId != 8))
+                        {
+                            item.SId = 9;
+                        }
+                    }
+                    _context.SaveChanges();
+                }
             }
         }
 

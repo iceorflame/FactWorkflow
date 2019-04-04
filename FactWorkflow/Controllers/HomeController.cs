@@ -52,8 +52,8 @@ namespace FactWorkflow.Controllers
                 var document2 = _context.Histories.Where(r => r.SId == 1).Include(d => d.Document.File).Include(s => s.Status).Include(t => t.Type);
                 return View(document2);
             }
-            //var documents = _context.Resolves.Where(r => r.RStatus == "Не переглянуто" && r.User.UMail == HttpContext.User.Identity.Name).Include(d => d.Document);
-            return View();
+            var documents = _context.Histories.Where(r => r.SId == 5 && r.User.UMail == HttpContext.User.Identity.Name).Include(d => d.Document.File).Include(s => s.Status).Include(t => t.Type);
+            return View(documents);
         }
 
         [HttpGet]
@@ -166,25 +166,29 @@ namespace FactWorkflow.Controllers
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
         public IActionResult DocumentTable()
         {
-            //if (HttpContext.User.IsInRole("rector") || HttpContext.User.IsInRole("office"))
-            //{
-            //    var resolves = _context.Resolves.Include(u => u.User).Include(d => d.Document.File).Where(x => x.User.RId > 4);
-            //    return View(resolves);
-            //}
-            //var resolves2 = _context.Resolves.Include(u => u.User).Include(d => d.Document.File).Where(x => x.User.UMail == HttpContext.User.Identity.Name);
-            return View();
+            if (HttpContext.User.IsInRole("rector") || HttpContext.User.IsInRole("office"))
+            {
+                var histories = _context.Histories.Include(u => u.User).Include(d => d.Document.File).Include(s => s.Status).Include(t => t.Type).Where(x => x.SId > 4);
+                return View(histories);
+            }
+            var documents = _context.Histories.Where(r => r.SId > 4 && r.User.UMail == HttpContext.User.Identity.Name).Include(d => d.Document.File).Include(s => s.Status).Include(t => t.Type);
+            return View(documents);
         }
 
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
-        public IActionResult ChangeStatus(int? did, int? uid)
+        public IActionResult ChangeStatus(int hid)
         {
-            Resolve resolve = _context.Resolves.Find(did, uid);
-            if (resolve != null)
+            History history = _context.Histories.Find(hid);
+            if (history.TId == 1)
             {
-                //resolve.RStatus = "Документ переглянуто";
-                _context.Entry(resolve).State = EntityState.Modified;
-                _context.SaveChanges();
+                history.SId = 6;
             }
+            else
+            {
+                history.SId = 7;
+            }
+            _context.Entry(history).State = EntityState.Modified;
+            _context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
 
@@ -258,7 +262,7 @@ namespace FactWorkflow.Controllers
             }
             else
             {
-                _context.Histories.Add(new History { TId = 2, DId = resolve.DId, UId = userSelect, HAddress = u, HDate = dateSelect.Date, HOriginal = rOriginal, HResponsible = rResponsible, SId = 7 });
+                _context.Histories.Add(new History { TId = 2, DId = resolve.DId, UId = userSelect, HAddress = u, HDate = dateSelect.Date, HOriginal = rOriginal, HResponsible = rResponsible, SId = 5 });
             }
             _context.SaveChanges();
             var histories = _context.Histories.Include(t => t.Type).Where(r => r.SId > 4);
@@ -291,6 +295,29 @@ namespace FactWorkflow.Controllers
             return RedirectToAction("Office", "Home");
         }
 
-        
+        public IActionResult DeleteHistory(int hid, int rid)
+        {
+            History history = _context.Histories.Find(hid);
+            _context.Histories.Remove(history);
+            _context.SaveChanges();
+            Resolve resolve = _context.Resolves.Find(rid);
+            var histories = _context.Histories.Include(t => t.Type).Where(r => r.SId > 4);
+            SendResolve sendResolve = new SendResolve { Resolve = resolve, Histories = histories };
+            return RedirectToAction("SendResolve", "Home", new { resid = rid });
+        }
+
+        public IActionResult ApplyWork(int did)
+        {
+            var history = _context.Histories.Where(d => d.DId == did && d.SId > 4);
+            foreach (var item in history)
+            {
+                item.SId = 8;
+                _context.Entry(item).State = EntityState.Modified;
+            }
+            _context.SaveChanges();
+            return RedirectToAction("DocumentTable", "Home");
+        }
+
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Users";
-    @model IEnumerable<FactWorkflow.Models.Resolve>;
+    @model IEnumerable<FactWorkflow.Models.History>;
     int documentid = 0;
 
 }
@@ -33,61 +33,74 @@
                                 <th>Дата</th>
                                 <th>Кореспондент</th>
                                 <th>Зміст</th>
-                                <th>Резолюція</th>
+                                <th>Тип</th>
+                                <th>Адресат</th>
                                 <th>Статус</th>
+                                <th>Виконати до</th>
+                                <th>Відповідальний</th>
+                                <th>Оригінал?</th>
                                 <th>Документ</th>
-                                @if (User.IsInRole("vrector") || User.IsInRole("dean"))
-                                {
-                                    <th></th>
-                                }
+                                <th width="8%"></th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>№</th>
-                                <th>Індекс</th>
-                                <th>Дата</th>
-                                <th>Кореспондент</th>
-                                <th>Зміст</th>
-                                <th>Резолюція</th>
-                                <th>Статус</th>
-                                <th>Документ</th>
-                                @if (User.IsInRole("vrector") || User.IsInRole("dean"))
-                                {
-                                <th></th>
-                                }
-                            </tr>
-                        </tfoot>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                if (item.Document.DId == documentid)
-                                {
-                                    <tr>
-                                        <td colspan="5"></td>
-                                        @*<td>@item.RAddress</td>*@
-                                        @*<td>@item.RStatus</td>*@
-                                        <td colspan="2"></td>
-                                    </tr>
-                                }
-                                else
-                                {
-                                    documentid = item.Document.DId;
-                                    <tr>
-                                        <td>@item.Document.DId</td>
-                                        <td>@item.Document.DIndex</td>
-                                        <td>@item.Document.DDate.ToString("dd.MM.yyyy")</td>
-                                        <td>@item.Document.DFrom</td>
-                                        <td>@item.Document.DAbout</td>
-                                        @*<td>@item.RAddress</td>*@
-                                        @*<td>@item.RStatus</td>*@
-                                        <td><a href="~/Home/Download/@item.Document.FId">@Html.DisplayFor(modelItem => item.Document.File.FName)</a></td>
-                                        @if(User.IsInRole("vrector") || User.IsInRole("dean")) 
-                                        {
-                                        @*<td align="center"><a href="~/Home/AddResolve?did=@item.DId&uid=@item.UId"><i class="fa fa-plus bigger-130 padding-2 grey"></i></a></td>*@
-                                        }
-                                    </tr>
-                                }
+                                <tr>
+                                    <td>@item.DId</td>
+                                    <td>@item.Document.DIndex</td>
+                                    <td>@item.Document.DDate.ToString("dd.MM.yyyy")</td>
+                                    <td>@item.Document.DFrom</td>
+                                    <td>@item.Document.DAbout</td>
+                                    <td>@item.Type.TName</td>
+                                    <td>@item.HAddress</td>
+                                    <td>@item.Status.SName</td>
+                                    @if (item.HDate != null)
+                                    {
+                                        <td align="center">@item.HDate.Value.ToString("dd.MM.yyyy")</td>
+                                    }
+                                    else
+                                    {
+                                        <td align="center"><i class="fa fa-times"></i></td>
+                                    }
+                                    @if (item.HResponsible == true)
+                                    {
+                                        <td align="center"><i class="fa fa-check"></i></td>
+                                    }
+                                    else
+                                    {
+                                        <td align="center"><i class="fa fa-times"></i></td>
+                                    }
+                                    @if (item.HOriginal == true)
+                                    {
+                                        <td align="center"><i class="fa fa-check"></i></td>
+                                    }
+                                    else
+                                    {
+                                        <td align="center"><i class="fa fa-times"></i></td>
+                                    }
+                                    <td><a href="~/Home/Download/@item.Document.FId">@Html.DisplayFor(modelItem => item.Document.File.FName)</a></td>
+                                    @if (item.SId == 7)
+                                    {
+                                        <td>
+                                            <div class="btn-group-vertical">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
+                                                        Керування
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="~/Home/ApplyWork?did=@item.DId">Підтвердити виконання</a>
+                                                        <!--  <a class="dropdown-item" href="">Дія 1</a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -106,6 +119,9 @@
             </div>
         </div>
     </footer>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/tableLanguage.js"></script>
 
 </div>
 <!-- /.content-wrapper -->

@@ -47,7 +47,7 @@
                                 <th>Статус</th>
                                 <th>Адресат</th>
                                 <th>Документ</th>
-                                <th></th>
+                                <th width="8%"></th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -72,7 +72,7 @@
                                                 </button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="~/Home/AddResolve?hid=@item.Hid">Написати резолюцію</a>
-                                                    <a class="dropdown-item">Назва 1</a>
+                                                   <!-- <a class="dropdown-item">Назва 1</a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -80,7 +80,19 @@
                                 }
                                 else
                                 {
-                                    <td align="center"><a href="~/Home/ChangeStatus?resid=@item.DId"><i class="fa fa-plus bigger-130 padding-2 grey"></i></a></td>
+                                    <td>
+                                        <div class="btn-group-vertical">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
+                                                    Керування
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="~/Home/ChangeStatus?hid=@item.Hid">Підтвердити перегляд</a>
+                                                    <!--  <a class="dropdown-item" href="">Дія 1</a> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 }
                             </tr>
                             }
