@@ -67,7 +67,7 @@ using FactWorkflow.Models;
             WriteLiteral("\r\n<div id=\"content-wrapper\">\r\n\r\n    <div class=\"container-fluid\">\r\n\r\n        <!-- Breadcrumbs-->\r\n        <ol class=\"breadcrumb\">\r\n            <li class=\"breadcrumb-item\">\r\n                ");
             EndContext();
             BeginContext(311, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "53c502fbf24d4091aa7eed5e7e319637", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2b528113dc924c84a868c7b52e91d5af", async() => {
                 BeginContext(334, 7, true);
                 WriteLiteral("Головна");
                 EndContext();
@@ -236,7 +236,7 @@ using FactWorkflow.Models;
             WriteLiteral("                                        <td>");
             EndContext();
             BeginContext(3666, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2176a63b31d94bae8d9d64d015beb104", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ba278c07276c4bb58dbb42eab5fe0617", async() => {
                 BeginContext(3712, 54, false);
 #line 84 "D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\Views\Home\DocumentTable.cshtml"
                                                                                     Write(Html.DisplayFor(modelItem => item.Document.File.FName));

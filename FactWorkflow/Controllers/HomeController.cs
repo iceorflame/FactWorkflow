@@ -238,17 +238,27 @@ namespace FactWorkflow.Controllers
 
         [HttpPost]
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
-        public IActionResult SendResolve(int resid, int optradio, int userSelect, string userName, DateTime dateSelect, int rOriginal, int rResponsible)
+        public IActionResult SendResolve(int resid, int optradio,int roleSelect, int userSelect, string userName, DateTime dateSelect, bool rOriginal, bool rResponsible)
         {
+            string u;
             Resolve resolve = _context.Resolves.Find(resid);
-
-            if (optradio == 1)
+            if(roleSelect != 7)
             {
-                _context.Histories.Add(new History { TId = 1, DId = resolve.DId, UId = userSelect, HAddress = userName, SId = 5 });
+                User user = _context.Users.Find(userSelect);
+                u = user.UName;
             }
             else
             {
-                _context.Histories.Add(new History { TId = 2, DId = resolve.DId, UId = userSelect, HAddress = userName, HDate = dateSelect.Date, SId = 7 });
+                u = userName;
+            }
+
+            if (optradio == 1)
+            {
+                _context.Histories.Add(new History { TId = 1, DId = resolve.DId, UId = userSelect, HAddress = u, HOriginal=rOriginal,HResponsible=rResponsible, SId = 5 });
+            }
+            else
+            {
+                _context.Histories.Add(new History { TId = 2, DId = resolve.DId, UId = userSelect, HAddress = u, HDate = dateSelect.Date, HOriginal = rOriginal, HResponsible = rResponsible, SId = 7 });
             }
             _context.SaveChanges();
             var histories = _context.Histories.Include(t => t.Type).Where(r => r.SId > 4);

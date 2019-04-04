@@ -22,9 +22,9 @@ namespace FactWorkflow.Models
         public int UId { get; set; }
         public User User { get; set; }
 
-        public int? HResponsible { get; set; }
+        public bool? HResponsible { get; set; }
 
-        public int? HOriginal { get; set; }
+        public bool? HOriginal { get; set; }
 
         public string HAddress { get; set; }
 
