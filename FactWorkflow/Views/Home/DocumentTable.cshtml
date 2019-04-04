@@ -1,8 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Users";
     @model IEnumerable<FactWorkflow.Models.History>;
-    int documentid = 0;
-
+    var hidden = false;
+    @if (User.IsInRole("office") || User.IsInRole("rector"))
+    {
+        hidden = true;
+    }
 }
 
 <div id="content-wrapper">
@@ -40,7 +43,7 @@
                                 <th>Відповідальний</th>
                                 <th>Оригінал?</th>
                                 <th>Документ</th>
-                                <th width="8%"></th>
+                                <th width="8%" hidden=@hidden></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -82,7 +85,7 @@
                                     <td><a href="~/Home/Download/@item.Document.FId">@Html.DisplayFor(modelItem => item.Document.File.FName)</a></td>
                                     @if (item.SId == 7)
                                     {
-                                        <td>
+                                        <td hidden=@hidden>
                                             <div class="btn-group-vertical">
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
@@ -98,7 +101,7 @@
                                     }
                                     else
                                     {
-                                        <td></td>
+                                        <td hidden=@hidden></td>
                                     }
                                 </tr>
                             }
