@@ -18,9 +18,11 @@ namespace FactWorkflow.Models
         public Role Role { get; set; }
 
         public List<History> Histories { get; set; }
+        public List<History> HistoriesOut { get; set; }
 
         public User()
         {
+            HistoriesOut = new List<History>();
             Histories = new List<History>();
         }
     }

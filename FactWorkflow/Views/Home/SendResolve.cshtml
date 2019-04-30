@@ -69,7 +69,7 @@
                                                 Керування
                                             </button>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="~/Home/DeleteHistory?hid=@item.Hid&rid=@Model.Resolve.RId">Видалити</a>
+                                                <a class="dropdown-item" href="~/Home/DeleteHistory?hid=@item.Hid">Видалити</a>
                                               <!--  <a class="dropdown-item" href="">Дія 1</a> -->
                                             </div>
                                         </div>
@@ -92,11 +92,7 @@
                 <div class="table-responsive">
                     <div class="col-lg-6">
                         <form role="form" enctype="multipart/form-data" method="post">
-                            @Html.HiddenFor(model => model.Resolve.DId)
-                            <div class="form-group">
-                                <label>Резолюція</label>
-                                @Html.EditorFor(model => model.Resolve.RText, new { htmlAttributes = new { @autocomplete = "off", @id = "raddress", @type = "text", @class = "form-control", @readonly = "true" } })
-                            </div>
+                            @Html.HiddenFor(model => model.Document.DId)
                             <div class="form-group">
                                 <div class="radio">
                                     <label><input type="radio" id="toObserve" name="optradio" value="1" onclick="showAdditionalFields()" checked>На ознайомлення</label>

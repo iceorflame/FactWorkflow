@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,6 +12,11 @@ namespace FactWorkflow.Models
         [Key]
         public int Hid { get; set; }
 
+        public int HUser { get; set; }
+
+        [ForeignKey("HUser")]
+        public User UserOut { get; set; }
+
         public int TId { get; set; }
         public Type Type { get; set; }
 
@@ -20,6 +26,8 @@ namespace FactWorkflow.Models
         public Document Document { get; set; }
 
         public int UId { get; set; }
+
+        [ForeignKey("UId")]
         public User User { get; set; }
 
         public bool? HResponsible { get; set; }

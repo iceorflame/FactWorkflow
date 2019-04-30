@@ -43,16 +43,7 @@ namespace FactWorkflow.Controllers
             {
                 return RedirectToAction("TokenTable", "Administration");
             }
-            else if (HttpContext.User.IsInRole("office"))
-            {
-                return RedirectToAction("Office", "Home");
-            }
-            else if (HttpContext.User.IsInRole("rector"))
-            {
-                var document2 = _context.Histories.Where(r => r.SId == 1).Include(d => d.Document.File).Include(s => s.Status).Include(t => t.Type);
-                return View(document2);
-            }
-            var documents = _context.Histories.Where(r => r.SId == 5 && r.User.UMail == HttpContext.User.Identity.Name).Include(d => d.Document.File).Include(s => s.Status).Include(t => t.Type);
+            var documents = _context.Documents.Include(f=>f.File).Include(h=>h.Histories);
             return View(documents);
         }
 
@@ -102,13 +93,10 @@ namespace FactWorkflow.Controllers
 
         [HttpPost]
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
-        public IActionResult AddDocument(AddDocument addDocument, Document document, Models.File file, History history, IFormFile uploadFile, int classification)
+        public IActionResult AddDocument(AddDocument addDocument, Document document, Models.File file, IFormFile uploadFile, int classification)
         {
             if (uploadFile != null)
             {
-                User user = _context.Users.FirstOrDefault(u => u.RId == 4);
-                if(user != null)
-                {
                     if (ModelState.IsValid)
                     {
                         document.DAbout = addDocument.DocumentAbout;
@@ -130,13 +118,6 @@ namespace FactWorkflow.Controllers
                         document.DDate = DateTime.Now;
                         document.DIndex = document.DId + "/" + classification + "/1.9";
                         _context.Entry(document).State = EntityState.Modified;
-
-                        history.DId = document.DId;
-                        history.TId = 1;
-                        history.UId = user.UId;
-                        history.HAddress = user.UName;
-                        history.SId = 1;
-                        _context.Histories.Add(history);
                         _context.SaveChanges();
                     }
                     else
@@ -144,21 +125,13 @@ namespace FactWorkflow.Controllers
                         ViewData["Message"] = "Text";
                         return View();
                     }
-
-                }
-                else
-                {
-                    ViewData["Message"] = "Rector";
-                    return View();
-                }
-
             }
-            else {
+            else
+            {
                 ViewData["Message"] = "File";
                 return View();
             }
 
-            //return RedirectToAction("DocumentTable","Home");
             return RedirectToAction("Index", "Home");
         }
 
@@ -217,36 +190,42 @@ namespace FactWorkflow.Controllers
 
         [HttpGet]
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
-        public IActionResult SendResolve(int resid)
+        public IActionResult SendResolve(int did)
         {
-            Resolve resolve = _context.Resolves.Find(resid);
-            var histories = _context.Histories.Include(t => t.Type).Where(r => r.SId > 4);
-            SendResolve sendResolve = new SendResolve { Resolve = resolve, Histories = histories };
+            if (User.IsInRole("office"))
+            {
+                User user2 = _context.Users.FirstOrDefault(u => u.RId == 4);
+                Document document2 = _context.Documents.Find(did);
+
+                var history2 = _context.Histories.Include(t => t.Type).Where(h => h.HUser == user2.UId && h.DId == did);
+                SendResolve sendResolve2 = new SendResolve { Document = document2, Histories = history2 };
+                return View(sendResolve2);
+            }
+
+            User user = _context.Users.FirstOrDefault(u => u.UMail == HttpContext.User.Identity.Name);
+            Document document = _context.Documents.Find(did);
+
+            var history = _context.Histories.Include(t => t.Type).Where(h => h.HUser == user.UId);
+            SendResolve sendResolve = new SendResolve { Document = document, Histories = history };
             return View(sendResolve);
-        }
-
-        [HttpGet]
-
-        public IActionResult GetRoles()
-        {
-            var roles = _context.Roles.Where(x => x.RId > 4).ToList();
-            return new ObjectResult(roles);
-        }
-
-        [HttpGet]
-        public IActionResult GetUsers(int? id)
-        {
-            var users = _context.Users.Where(x => x.RId == id).Select(x => new DTOUser(x)).ToList();
-            return new ObjectResult(users);
         }
 
         [HttpPost]
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
-        public IActionResult SendResolve(int resid, int optradio,int roleSelect, int userSelect, string userName, DateTime dateSelect, bool rOriginal, bool rResponsible)
+        public IActionResult SendResolve(Document document, int optradio,int roleSelect, int userSelect, string userName, DateTime dateSelect, bool rOriginal, bool rResponsible)
         {
             string u;
-            Resolve resolve = _context.Resolves.Find(resid);
-            if(roleSelect != 7)
+            User us;
+            if (User.IsInRole("office"))
+            {
+                us = _context.Users.FirstOrDefault(f => f.RId == 4);
+            }
+            else
+            {
+                us = _context.Users.FirstOrDefault(f => f.UMail == HttpContext.User.Identity.Name);
+            }
+
+            if (roleSelect != 7)
             {
                 User user = _context.Users.Find(userSelect);
                 u = user.UName;
@@ -258,15 +237,16 @@ namespace FactWorkflow.Controllers
 
             if (optradio == 1)
             {
-                _context.Histories.Add(new History { TId = 1, DId = resolve.DId, UId = userSelect, HAddress = u, HOriginal=rOriginal,HResponsible=rResponsible, SId = 5 });
+                _context.Histories.Add(new History {  HUser = us.UId, TId = 1, DId = document.DId, UId = userSelect, HAddress = u, HOriginal=rOriginal,HResponsible=rResponsible, SId = 5 });
             }
             else
             {
-                _context.Histories.Add(new History { TId = 2, DId = resolve.DId, UId = userSelect, HAddress = u, HDate = dateSelect.Date, HOriginal = rOriginal, HResponsible = rResponsible, SId = 5 });
+                _context.Histories.Add(new History { HUser = us.UId, TId = 2, DId = document.DId, UId = userSelect, HAddress = u, HDate = dateSelect.Date, HOriginal = rOriginal, HResponsible = rResponsible, SId = 5 });
             }
             _context.SaveChanges();
-            var histories = _context.Histories.Include(t => t.Type).Where(r => r.SId > 4);
-            SendResolve sendResolve = new SendResolve { Resolve = resolve, Histories = histories };
+
+            var history = _context.Histories.Include(t => t.Type).Where(h => h.HUser == us.UId && h.DId == document.DId);
+            SendResolve sendResolve = new SendResolve { Document = document, Histories = history };
             return View(sendResolve);
         }
 
@@ -302,13 +282,13 @@ namespace FactWorkflow.Controllers
             _context.SaveChanges();
             Resolve resolve = _context.Resolves.Find(rid);
             var histories = _context.Histories.Include(t => t.Type).Where(r => r.SId > 4);
-            SendResolve sendResolve = new SendResolve { Resolve = resolve, Histories = histories };
+            //SendResolve sendResolve = new SendResolve { Resolve = resolve, Histories = histories };
             return RedirectToAction("SendResolve", "Home", new { resid = rid });
         }
 
         public IActionResult ApplyWork(int did)
         {
-            var history = _context.Histories.Where(d => d.DId == did && d.SId > 4);
+            var history = _context.Histories.Where(d => d.DId == did && d.TId == 2 && d.SId > 4);
             foreach (var item in history)
             {
                 item.SId = 8;
@@ -316,6 +296,36 @@ namespace FactWorkflow.Controllers
             }
             _context.SaveChanges();
             return RedirectToAction("DocumentTable", "Home");
+        }
+
+        [HttpGet]
+        //[Authorize]
+        public  JsonResult GetTableData()
+        {
+            //var documents = _context.Documents.Include(f => f.File).Include(h=>h.Histories);
+            var documents = _context.Documents
+                .Include(f => f.File)
+                .Include(h => h.Histories)
+                    .ThenInclude(u => u.User)
+                .Include(h=>h.Histories)
+                    .ThenInclude(u=>u.UserOut)
+                .Include(h => h.Histories)
+                    .ThenInclude(u => u.Status);
+            return Json(documents);
+        }
+
+        [HttpGet]
+        public IActionResult GetRoles()
+        {
+            var roles = _context.Roles.Where(x => x.RId > 4).ToList();
+            return new ObjectResult(roles);
+        }
+
+        [HttpGet]
+        public IActionResult GetUsers(int? id)
+        {
+            var users = _context.Users.Where(x => x.RId == id).Select(x => new DTOUser(x)).ToList();
+            return new ObjectResult(users);
         }
 
 

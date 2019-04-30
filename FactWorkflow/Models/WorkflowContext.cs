@@ -20,5 +20,19 @@ namespace FactWorkflow.Models
 
         public WorkflowContext(DbContextOptions<WorkflowContext> options)
             : base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<History>(act =>
+            {
+                act.HasOne(field => field.UserOut)
+                .WithMany(fk => fk.HistoriesOut)
+                .HasForeignKey(fk => fk.HUser);
+
+                act.HasOne(field => field.User)
+                .WithMany(fk => fk.Histories)
+                .HasForeignKey(fk => fk.UId);
+            });
+        }
     }
 }

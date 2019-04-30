@@ -7,7 +7,7 @@ namespace FactWorkflow.Models
 {
     public class SendResolve
     {
-        public Resolve Resolve { get; set; }
+        public Document Document { get; set; }
         public IEnumerable<History> Histories { get; set; }
     }
 
