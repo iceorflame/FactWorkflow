@@ -38,5 +38,8 @@ namespace FactWorkflow.Models
 
         public int SId { get; set; }
         public Status Status { get; set; }
+
+        public int? AId { get; set; }
+        public Answer Answer { get; set; }
     }
 }

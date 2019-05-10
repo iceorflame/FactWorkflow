@@ -1,80 +1,90 @@
 ﻿$(document).ready(function () {
-    getTableData().then(data => {
-        console.log(data);
-        var table = $('#documentTable').DataTable({
-            "columnDefs": [{ orderable: false, targets: [0, 6, 7] }],
-            "order": [[1, "desc"]],
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Ukrainian.json"
-            },
-            "data": data,
-            "columns": [
-            {
-                "className": 'details-control',
-                "orderable": false,
-                "data": null,
-                "defaultContent": '',
-                    "render": function (data, type, row, meta) {
+    var table = $('#documentTable').DataTable({
+        "columnDefs": [{ orderable: false, targets: [0, 6, 7] }],
+        "order": [[1, "desc"]],
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Ukrainian.json"
+        }
+    });
+    //getTableData().then(data => {
+        //console.log(data);
+        //var table = $('#documentTable').DataTable({
+        //    "columnDefs": [{ orderable: false, targets: [0, 6, 7] }],
+        //    "order": [[1, "desc"]],
+        //    "language": {
+        //        "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Ukrainian.json"
+        //    },
+        //    "data": data,
+        //    "columns": [
+        //    {
+        //        "className": 'details-control',
+        //        "orderable": false,
+        //        "data": null,
+        //        "defaultContent": '',
+        //            "render": function (data, type, row, meta) {
 
-                    return '<i class="fa fa-chevron-down"></i>';
-                }
-            },
-            { "data": "dId" },
-            { "data": "dIndex" },
-                {
-                    "data": "dDate",
-                    "render": function (data, type, row, meta) {
-                        return new Date(data).toLocaleDateString();
-                    }
-                },
-            { "data": "dFrom" },
-            { "data": "dAbout" },
-                {
-                    "data": "file",
-                    "orderable": false,
-                    "defaultContent": '',
-                    "render": function (data, type, row, meta) {
-                        return '<a href="/Home/Download/' + data.fId + '">' + data.fName+'</a>';
-                    }
-                },
-                {
-                    "data": "dId",
-                    "render": function (data, type, row, meta) {
-                        return `<div class="btn-group-vertical">
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
-                                                        Керування
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="/Home/SendResolve?did=${data}">Написати резолюцію</a>
-                                                        <a class="dropdown-item" href="/Home/SendResolve?did=${data}">Видалити документ</a>
-                                                        <!-- <a class="dropdown-item">Назва 1</a> -->
-                                                    </div>
-                                                </div>
-                                            </div>`;
-                    }
-                }
-            ]
-        });
+        //            return '<i class="fa fa-chevron-down"></i>';
+        //        }
+        //    },
+        //    { "data": "dId" },
+        //    { "data": "dIndex" },
+        //        {
+        //            "data": "dDate",
+        //            "render": function (data, type, row, meta) {
+        //                return new Date(data).toLocaleDateString();
+        //            }
+        //        },
+        //    { "data": "dFrom" },
+        //    { "data": "dAbout" },
+        //        {
+        //            "data": "file",
+        //            "orderable": false,
+        //            "defaultContent": '',
+        //            "render": function (data, type, row, meta) {
+        //                return '<a href="/Home/Download/' + data.fId + '">' + data.fName+'</a>';
+        //            }
+        //        },
+        //        {
+        //            "data": "dId",
+        //            "render": function (data, type, row, meta) {
+        //                return `<div class="btn-group-vertical">
+        //                                        <div class="btn-group">
+        //                                            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
+        //                                                Керування
+        //                                            </button>
+        //                                            <div class="dropdown-menu">
+        //                                                <a class="dropdown-item" href="/Home/SendResolve?did=${data}">Написати резолюцію</a>
+        //                                                <a class="dropdown-item" href="/Home/SendResolve?did=${data}">Видалити документ</a>
+        //                                                <!-- <a class="dropdown-item">Назва 1</a> -->
+        //                                            </div>
+        //                                        </div>
+        //                                    </div>`;
+        //            }
+        //        }
+        //    ]
+        //});
 
-        $('#documentTable tbody').on('click', 'td.details-control', function () {
+        $('#documentTable tbody').on('click', 'td.details-control', async function () {
             var tr = $(this).closest('tr');
+            console.log(tr);
             var row = table.row(tr);
+            let data = await getChildData(tr[0].id);
+            console.log(data);
 
             if (row.child.isShown()) {
                 row.child.hide();
                 tr.removeClass('shown');
             }
             else {
-                row.child(format(row.data())).show();
+                row.child(format(data)).show();
                 tr.addClass('shown');
             }
         });
-    });
+    //});
 });
 
-function getTableData() {
-    const tableUrl = window.location.origin + "/Home/GetTableData";
+function getChildData(id) {
+    const tableUrl = window.location.origin + `/Home/GetChildData?did=${id}`;
     return fetch(tableUrl)
         .then(response => {
             console.log(response.headers);
@@ -87,10 +97,10 @@ function getTableData() {
 };
 
 function format(d) {
-    console.log(d);
-    if (d.histories.length) {
+    //console.log(d);
+    if (d.length) {
         return `<table width="100%" class="table table-bordered">
-                 ${tableRows(d.histories)}   
+                 ${tableRows(d)}   
                 </table>`;
 
     }
@@ -126,13 +136,13 @@ function tableRows(histories) {
         if (h.hResponsible) {
             responsible = "Відповідальний";
         } else {
-            responsible = "-";
+            responsible = "Не відповідальний";
         }
 
         if (h.hOriginal) {
             original = "Має оригінал";
         } else {
-            original = "-";
+            original = "Не має оригінал";
         }
 
         body += `<tr>

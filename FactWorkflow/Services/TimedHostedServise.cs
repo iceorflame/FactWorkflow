@@ -31,22 +31,22 @@ namespace FactWorkflow.Services
 
         private void DoWork(object state)
         {
-            if ((DateTime.Now.Hour >= 0) && (DateTime.Now.Hour <= 1))
-            {
-                using (var scope = scopeFactory.CreateScope())
-                {
-                    var _context = scope.ServiceProvider.GetRequiredService<WorkflowContext>();
-                    var resolveList = _context.Histories.Include(t => t.Type).Where(r => r.TId == 2);
-                    foreach (var item in resolveList)
-                    {
-                        if ((item.HDate >= DateTime.Now.Date) && (item.SId != 8))
-                        {
-                            item.SId = 9;
-                        }
-                    }
-                    _context.SaveChanges();
-                }
-            }
+            //if ((DateTime.Now.Hour >= 0) && (DateTime.Now.Hour <= 1))
+            //{
+            //    using (var scope = scopeFactory.CreateScope())
+            //    {
+            //        var _context = scope.ServiceProvider.GetRequiredService<WorkflowContext>();
+            //        var resolveList = _context.Histories.Include(t => t.Type).Where(r => r.TId == 2);
+            //        foreach (var item in resolveList)
+            //        {
+            //            if ((item.HDate >= DateTime.Now.Date) && (item.SId != 8))
+            //            {
+            //                item.SId = 9;
+            //            }
+            //        }
+            //        _context.SaveChanges();
+            //    }
+            //}
         }
 
         public Task StopAsync(CancellationToken cancellationToken)

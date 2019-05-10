@@ -86,7 +86,7 @@ using FactWorkflow.Models;
             WriteLiteral("\r\n<div id=\"content-wrapper\">\r\n    \r\n    <div class=\"container-fluid\">\r\n\r\n        <!-- Breadcrumbs-->\r\n        <ol class=\"breadcrumb\">\r\n            <li class=\"breadcrumb-item\">\r\n                ");
             EndContext();
             BeginContext(280, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c8959b558c7f47d8b544ba2449123921", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fb1c3286794c410c83201a8f441414f8", async() => {
                 BeginContext(303, 7, true);
                 WriteLiteral("Головна");
                 EndContext();
@@ -157,12 +157,12 @@ using FactWorkflow.Models;
                         ");
             EndContext();
             BeginContext(1727, 3171, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c1bb028c865d4ce98ca71e9edc13f69f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e7d393c5afab4a8b945ffddb253b66a6", async() => {
                 BeginContext(1789, 238, true);
                 WriteLiteral("\r\n                            <div class=\"form-group\">\r\n                                <label>Класифікатор</label>\r\n                                <select class=\"form-control\" name=\"classification\">\r\n                                    ");
                 EndContext();
                 BeginContext(2027, 130, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e11fe067d63f46cf92ca3f0bb28afd72", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0a4f867f6e434f8abcf7e72a0e54a217", async() => {
                     BeginContext(2046, 102, true);
                     WriteLiteral("01 - Адміністрація Президента України, Верховна Рада України, Кабінет Міністрів України та його органи");
                     EndContext();
@@ -184,7 +184,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(2195, 121, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7c70acfa651d40fda59933e63cb82079", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7af9b8cf26c2466f93a7feb07523edf5", async() => {
                     BeginContext(2214, 93, true);
                     WriteLiteral("02 - Міністерство освіти і науки України, Ради ректорів, Державна атестаційна комісія України");
                     EndContext();
@@ -206,7 +206,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(2354, 85, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4580090842e64854abd53f114094da1c", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d775cdf6879b481e8de07b040e7e34ce", async() => {
                     BeginContext(2373, 57, true);
                     WriteLiteral("03 - Інші міністерства, органи державної виконавчої влади");
                     EndContext();
@@ -228,7 +228,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(2477, 80, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2e5704e8b3304437b246244bc46c38b6", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "18c9aab3cdf34fe1a63071cbb71bd1ec", async() => {
                     BeginContext(2496, 52, true);
                     WriteLiteral("04 - Народні депутати України, депутати місцевих рад");
                     EndContext();
@@ -250,7 +250,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(2595, 88, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "559ac09ab2e04be7bc51b9ed55485ef1", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6f9fa58448a048d1a5341fd7b4e38403", async() => {
                     BeginContext(2614, 60, true);
                     WriteLiteral("05 - Академії наук, науково-дослідні та проектні організації");
                     EndContext();
@@ -272,7 +272,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(2721, 152, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "542a7e7bb13646408950bf3ed70ae23a", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "73152395e94a4be090539acdf9d3b98c", async() => {
                     BeginContext(2740, 124, true);
                     WriteLiteral("06 - Посольства, консульства України за кордоном, посольства, консульства зарубіжних країн в Україні, закордонні організації");
                     EndContext();
@@ -294,7 +294,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(2911, 63, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d8e8912b8cd48809a686ff83c469db9", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "24d698b1d18e48bab48b8b2d9b83c296", async() => {
                     BeginContext(2930, 35, true);
                     WriteLiteral("07 - Вищі та середні заклади освіти");
                     EndContext();
@@ -316,7 +316,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(3012, 139, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ed2182a929c84da9ab0f62c7ea0f13a6", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4191099ef7b84b4a9cde3c161035265b", async() => {
                     BeginContext(3031, 111, true);
                     WriteLiteral("08 - Банки, торговельні організації, фонди, ревізійні організації, Торгово-промислова палата, Центри. Асоціації");
                     EndContext();
@@ -338,7 +338,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(3189, 108, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6ebf644c1c514c78ba994e8e89ca19e2", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fa7f1278d5f4c5fa39ae720b8f285f0", async() => {
                     BeginContext(3208, 80, true);
                     WriteLiteral("09 - Київгаз, Київенерго, Укртелеком, Київводоканал, Київтеплоенерго, Київзембуд");
                     EndContext();
@@ -360,7 +360,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(3335, 118, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa08a6a0b4d94e2a960213fa2cf49d04", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "63024d2133a64326aa2a23f344ebc772", async() => {
                     BeginContext(3354, 90, true);
                     WriteLiteral("10 - Поліція, органи адвокатури, прокуратури та суду, військкомати, військові частини, СБУ");
                     EndContext();
@@ -382,7 +382,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(3491, 85, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4aae862c3a654370b31bfb8112495c1d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6f5ffec8151e4de992dbe250bf1fd99c", async() => {
                     BeginContext(3510, 57, true);
                     WriteLiteral("11 - Будівельні організації, підприємства(юридичні особи)");
                     EndContext();
@@ -404,7 +404,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(3614, 65, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2e42ff5c01544b2ae3c069e20ddfe39", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "91ddd2775c22407c97523ce3f08c254a", async() => {
                     BeginContext(3633, 37, true);
                     WriteLiteral("12 - Інші підприємства та організації");
                     EndContext();
@@ -426,7 +426,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(3717, 76, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19ec3e0bedf6413c9acfd969fc5aff1b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "421ffeb35ac54faaa40f8b3cf9e6508e", async() => {
                     BeginContext(3736, 48, true);
                     WriteLiteral("13 - Редакції газет, журналів, бібліотеки, музеї");
                     EndContext();
@@ -448,7 +448,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                    ");
                 EndContext();
                 BeginContext(3831, 46, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a878ecbf022247f297460a9a238806d9", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "05c5a64dbd5640e1ba798e3174b6c476", async() => {
                     BeginContext(3850, 18, true);
                     WriteLiteral("14 - Фізичні особи");
                     EndContext();
@@ -470,7 +470,7 @@ using FactWorkflow.Models;
                 WriteLiteral("\r\n                                </select>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                ");
                 EndContext();
                 BeginContext(4044, 50, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3325d5e0e2454336bd79201f6e89c4f7", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4c8532ceeda04baea010f93ea1acecd2", async() => {
                     BeginContext(4074, 12, true);
                     WriteLiteral("Кореспондент");
                     EndContext();
@@ -496,7 +496,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper.For = ModelExpressionProvid
                 WriteLiteral("\r\n                                ");
                 EndContext();
                 BeginContext(4128, 51, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "a5ef667b79e24c8896262649e3270341", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "b27be314de9544d5b98129865516391c", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -520,7 +520,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 WriteLiteral("\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                ");
                 EndContext();
                 BeginContext(4303, 53, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1460c7aa09f240e29f7e12efd13e0064", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f512d2e63aaa481f9f56539801eb5a6d", async() => {
                     BeginContext(4334, 14, true);
                     WriteLiteral("Короткий зміст");
                     EndContext();
@@ -546,7 +546,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper.For = ModelExpressionProvid
                 WriteLiteral("\r\n                                ");
                 EndContext();
                 BeginContext(4390, 75, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("textarea", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dc84785f0fdd46dd87495dab32f8fb95", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("textarea", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "68fce917bb544d6381725a0b361f3201", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_TextAreaTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.TextAreaTagHelper>();

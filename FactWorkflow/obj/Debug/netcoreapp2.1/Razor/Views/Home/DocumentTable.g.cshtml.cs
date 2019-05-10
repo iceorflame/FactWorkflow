@@ -78,7 +78,7 @@ using FactWorkflow.Models;
             WriteLiteral("\r\n<div id=\"content-wrapper\">\r\n\r\n    <div class=\"container-fluid\">\r\n\r\n        <!-- Breadcrumbs-->\r\n        <ol class=\"breadcrumb\">\r\n            <li class=\"breadcrumb-item\">\r\n                ");
             EndContext();
             BeginContext(409, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "29aff871d4f642cb986bf002171bde14", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "af7c696d86ab4440b541a776a32796e0", async() => {
                 BeginContext(432, 7, true);
                 WriteLiteral("Головна");
                 EndContext();
@@ -315,7 +315,7 @@ WriteAttributeValue("", 1664, hidden, 1664, 7, false);
             WriteLiteral("                                    <td>");
             EndContext();
             BeginContext(3848, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e236e15aa0b9438da9346bf431200b37", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8355f146ce644e8a985a76db19c2b4a0", async() => {
                 BeginContext(3894, 54, false);
 #line 85 "D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\Views\Home\DocumentTable.cshtml"
                                                                                 Write(Html.DisplayFor(modelItem => item.Document.File.FName));
@@ -373,7 +373,7 @@ WriteAttributeValue("", 4106, hidden, 4106, 7, false);
                                                         ");
             EndContext();
             BeginContext(4701, 88, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "264130430048495b87ed1f18a429d4b7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9d141335c5b4f8d826dff128bdddcc7", async() => {
                 BeginContext(4764, 21, true);
                 WriteLiteral("Підтвердити виконання");
                 EndContext();
@@ -462,7 +462,7 @@ WriteAttributeValue("", 5287, hidden, 5287, 7, false);
     ");
             EndContext();
             BeginContext(5862, 51, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e026729ed59d4a63a80ee5507bc88922", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bef13dd64e864303a605346038521d5f", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -480,7 +480,7 @@ WriteAttributeValue("", 5287, hidden, 5287, 7, false);
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(5919, 45, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "38ba9c2579f04c8d8d7e912c6d46cfb8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "52f30d20aeea4bb5b9bca796de110038", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

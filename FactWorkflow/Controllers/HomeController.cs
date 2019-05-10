@@ -43,8 +43,15 @@ namespace FactWorkflow.Controllers
             {
                 return RedirectToAction("TokenTable", "Administration");
             }
-            var documents = _context.Documents.Include(f=>f.File).Include(h=>h.Histories);
-            return View(documents);
+            if((HttpContext.User.IsInRole("office")) || (HttpContext.User.IsInRole("rector")))
+            {
+                var documents = _context.Documents.Include(f => f.File).Include(h => h.Histories);
+                return View(documents);
+            }
+
+            User user = _context.Users.FirstOrDefault(u => u.UMail == HttpContext.User.Identity.Name);
+            var doc = _context.Documents.Include(f => f.File).Include(h => h.Histories).Where(c => c.Histories.Any(d => d.UId == user.UId));
+            return View(doc);
         }
 
         [HttpGet]
@@ -166,6 +173,43 @@ namespace FactWorkflow.Controllers
         }
 
         [HttpGet]
+        public IActionResult AddAnswer(int did)
+        {
+            Document doc = _context.Documents.Find(did);
+            return View(doc);
+        }
+
+        [HttpPost]
+        public IActionResult AddAnswer(Document document, Models.File file, Answer answer, string answerText, IFormFile uploadFile)
+        {
+            if (uploadFile != null)
+            {
+
+                byte[] imageData = null;
+                using (var binaryReader = new BinaryReader(uploadFile.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)uploadFile.Length);
+                }
+                file.FByte = imageData;
+                file.FName = uploadFile.FileName;
+                file.FType = uploadFile.ContentType;
+                _context.Files.Add(file);
+            }
+
+            answer.AText = answerText;
+            answer.FId = file.FId;
+            _context.Answers.Add(answer);
+
+            User user = _context.Users.FirstOrDefault(u => u.UMail == HttpContext.User.Identity.Name);
+            History history = _context.Histories.FirstOrDefault(h => h.DId == document.DId && h.UId == user.UId);
+            history.AId = answer.AId;
+            _context.Entry(history).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
         public IActionResult AddResolve(int hid)
         {
@@ -192,20 +236,21 @@ namespace FactWorkflow.Controllers
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
         public IActionResult SendResolve(int did)
         {
+            Document document = _context.Documents.Find(did);
+
             if (User.IsInRole("office"))
             {
                 User user2 = _context.Users.FirstOrDefault(u => u.RId == 4);
-                Document document2 = _context.Documents.Find(did);
 
                 var history2 = _context.Histories.Include(t => t.Type).Where(h => h.HUser == user2.UId && h.DId == did);
-                SendResolve sendResolve2 = new SendResolve { Document = document2, Histories = history2 };
+                SendResolve sendResolve2 = new SendResolve { Document = document, Histories = history2 };
                 return View(sendResolve2);
             }
 
             User user = _context.Users.FirstOrDefault(u => u.UMail == HttpContext.User.Identity.Name);
-            Document document = _context.Documents.Find(did);
+            
 
-            var history = _context.Histories.Include(t => t.Type).Where(h => h.HUser == user.UId);
+            var history = _context.Histories.Include(t => t.Type).Where(h => h.HUser == user.UId && h.DId == did);
             SendResolve sendResolve = new SendResolve { Document = document, Histories = history };
             return View(sendResolve);
         }
@@ -299,18 +344,10 @@ namespace FactWorkflow.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
-        public  JsonResult GetTableData()
+        [Authorize]
+        public  JsonResult GetChildData(int? did)
         {
-            //var documents = _context.Documents.Include(f => f.File).Include(h=>h.Histories);
-            var documents = _context.Documents
-                .Include(f => f.File)
-                .Include(h => h.Histories)
-                    .ThenInclude(u => u.User)
-                .Include(h=>h.Histories)
-                    .ThenInclude(u=>u.UserOut)
-                .Include(h => h.Histories)
-                    .ThenInclude(u => u.Status);
+            var documents = _context.Histories.Where(h => h.DId == did).Include(u=>u.User).Include(j=>j.UserOut).Include(s=>s.Status);
             return Json(documents);
         }
 

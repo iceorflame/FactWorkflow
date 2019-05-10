@@ -17,6 +17,7 @@ namespace FactWorkflow.Models
         public DbSet<Type> Types { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<History> Histories { get; set; }
+        public DbSet<Answer> Answers { get; set; }
 
         public WorkflowContext(DbContextOptions<WorkflowContext> options)
             : base(options) { }
