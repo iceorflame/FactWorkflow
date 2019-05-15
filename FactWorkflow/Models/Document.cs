@@ -12,6 +12,7 @@ namespace FactWorkflow.Models
         public int DId { get; set; }
         public string DIndex { get; set; }
         public DateTime DDate { get; set; }
+        public string DOut { get; set; }
         public string DFrom { get; set; }
         public string DAbout { get; set; }
 

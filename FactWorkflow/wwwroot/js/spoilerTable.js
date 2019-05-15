@@ -91,20 +91,20 @@ function tableRows(histories) {
         }
 
         if (h.aId) {
-            button = `<button type="button" data-toggle="modal" class="btn btn-link" value=${h.aId} onclick="openAnswerModal(this)" href="#answerModal">Переглянути звіт</button>`;
+            button = `<button type="button" data-toggle="modal" class="btn btn-link" value=${h.aId} onclick="openAnswerModal(this)" href="#answerModal">Звіт</button>`;
         } else {
             button = "";
         }
 
         body += `<tr>
-                    <td>${h.userOut.uName}</td>
-                    <td>${type}</td>
-                    <td>${h.hAddress}</td>
-                    <td>${date}</td>
-                    <td>${responsible}</td>
-                    <td>${original}</td>
-                    <td>${h.status.sName}</td>
-                    <td style="text-align: center;">${button}</td>
+                    <td width="20%">${h.userOut.uName}</td>
+                    <td width="13%">${type}</td>
+                    <td width="20%">${h.hAddress}</td>
+                    <td width="6%">${date}</td>
+                    <td width="13%">${responsible}</td>
+                    <td width="12%">${original}</td>
+                    <td width="12%">${h.status.sName}</td>
+                    <td style="text-align: center; width: 4%">${button}</td>
                  </tr>`;
     });
     return body;

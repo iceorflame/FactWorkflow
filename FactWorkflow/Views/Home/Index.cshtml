@@ -143,6 +143,7 @@
                                 <th>№</th>
                                 <th>Індекс</th>
                                 <th>Дата</th>
+                                <th>Вихідний індекс і дата</th>
                                 <th>Кореспондент</th>
                                 <th>Зміст</th>
                                 <th>Документ</th>
@@ -157,6 +158,7 @@
                                     <td>@item.DId</td>
                                     <td>@item.DIndex</td>
                                     <td>@item.DDate.ToString("dd.MM.yyyy")</td>
+                                    <td>@item.DOut</td>
                                     <td>@item.DFrom</td>
                                     <td>@item.DAbout</td>
                                     <td><a href="~/Home/Download/@item.FId">@Html.DisplayFor(modelItem => item.File.FName)</a></td>
@@ -167,8 +169,14 @@
                                                     Керування
                                                 </button>
                                                 <div class="dropdown-menu">
+                                                    @if (!(User.IsInRole("cathedra")))
+                                                    {
                                                     <a class="dropdown-item" href="/Home/SendResolve?did=@item.DId">Написати резолюцію</a>
+                                                    }
+                                                    else if (!(User.IsInRole("rector") || User.IsInRole("office")))
+                                                    {
                                                     <a class="dropdown-item" href="/Home/AddAnswer?did=@item.DId">Звіт про виконання</a>
+                                                    }
                                                     <!-- <a class="dropdown-item">Назва 1</a> -->
                                                 </div>
                                             </div>

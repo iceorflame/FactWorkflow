@@ -13,5 +13,8 @@ namespace FactWorkflow.Models
 
         [Required]
         public string DocumentAbout { get; set; }
+
+        [Required]
+        public string DocumentOut { get; set; }
     }
 }

@@ -108,6 +108,7 @@ namespace FactWorkflow.Controllers
                     {
                         document.DAbout = addDocument.DocumentAbout;
                         document.DFrom = addDocument.DocumentFrom;
+                        document.DOut = addDocument.DocumentOut;
                         _context.Documents.Add(document);
                         _context.SaveChanges();
 
@@ -320,15 +321,28 @@ namespace FactWorkflow.Controllers
             return RedirectToAction("Office", "Home");
         }
 
-        public IActionResult DeleteHistory(int hid, int rid)
+        public IActionResult DeleteHistory(int hid)
         {
             History history = _context.Histories.Find(hid);
             _context.Histories.Remove(history);
             _context.SaveChanges();
-            Resolve resolve = _context.Resolves.Find(rid);
-            var histories = _context.Histories.Include(t => t.Type).Where(r => r.SId > 4);
-            //SendResolve sendResolve = new SendResolve { Resolve = resolve, Histories = histories };
-            return RedirectToAction("SendResolve", "Home", new { resid = rid });
+           /* Document document = _context.Documents.Find(history.DId);
+
+            if (User.IsInRole("office"))
+            {
+                User user2 = _context.Users.FirstOrDefault(u => u.RId == 4);
+
+                var history2 = _context.Histories.Include(t => t.Type).Where(h => h.HUser == user2.UId && h.DId == history.DId);
+                SendResolve sendResolve2 = new SendResolve { Document = document, Histories = history2 };
+                return RedirectToAction("SendResolve", "Home", sendResolve2);
+            }
+
+            User user = _context.Users.FirstOrDefault(u => u.UMail == HttpContext.User.Identity.Name);
+
+
+            var his = _context.Histories.Include(t => t.Type).Where(h => h.HUser == user.UId && h.DId == history.DId);
+            SendResolve sendResolve = new SendResolve { Document = document, Histories = his };*/
+            return RedirectToAction("SendResolve", "Home", new { did = history.DId });
         }
 
         public IActionResult ApplyWork(int did)
