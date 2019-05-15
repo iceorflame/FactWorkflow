@@ -74,7 +74,7 @@ using FactWorkflow.Models;
             ");
             EndContext();
             BeginContext(439, 492, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4f9fe7de5ac54702ba4af852d4f99100", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8942e5c1cb7b4b0fb09f85d27ba3b6f5", async() => {
                 BeginContext(445, 479, true);
                 WriteLiteral(@"
                 <div class=""form-group"">
@@ -104,7 +104,7 @@ using FactWorkflow.Models;
             WriteLiteral("\n            <div class=\"text-center\">\n                ");
             EndContext();
             BeginContext(986, 79, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7a374b2785934c5da17fe32c7dcc0142", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e1d9d3b2f1c4d4b8040f45687248ad6", async() => {
                 BeginContext(1042, 19, true);
                 WriteLiteral("Register an Account");
                 EndContext();
@@ -126,7 +126,7 @@ using FactWorkflow.Models;
             WriteLiteral("\n                ");
             EndContext();
             BeginContext(1082, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6cf4bec25c864fbeb3de169298c2af48", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "985acce381fc43958bbd3f206129d124", async() => {
                 BeginContext(1130, 10, true);
                 WriteLiteral("Login Page");
                 EndContext();

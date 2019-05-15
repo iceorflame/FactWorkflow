@@ -352,6 +352,14 @@ namespace FactWorkflow.Controllers
         }
 
         [HttpGet]
+        [Authorize]
+        public JsonResult GetAnswer(int? aid)
+        {
+            var answer = _context.Answers.Include(f=>f.File).FirstOrDefault(k=>k.AId == aid);
+            return Json(answer);
+        }
+
+        [HttpGet]
         public IActionResult GetRoles()
         {
             var roles = _context.Roles.Where(x => x.RId > 4).ToList();

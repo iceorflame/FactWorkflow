@@ -22,118 +22,118 @@
                 Список документів
             </div>
             @*<div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>№</th>
-                            <th>Індекс</th>
-                            <th>Дата</th>
-                            <th>Кореспондент</th>
-                            <th>Зміст</th>
-                            <th>Документ</th>
-                            <th width="8%"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td align="center">
-                                    <i class="fa fa-chevron-down"></i>
-                                </td>
-                                <td>@item.DId</td>
-                                <td>@item.DIndex</td>
-                                <td>@item.DDate.ToString("dd.MM.yyyy")</td>
-                                <td>@item.DFrom</td>
-                                <td>@item.DAbout</td>
-                                <td><a href="~/Home/Download/@item.FId">@Html.DisplayFor(modelItem => item.File.FName)</a></td>
-                                <td align="center">
-                                    <div class="btn-group-vertical">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
-                                                Керування
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="~/Home/AddResolve?hid=@item.DId">Написати резолюцію</a>
-                                                <!-- <a class="dropdown-item">Назва 1</a> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            if (item.Histories.Count != 0)
-                            {
-                                <tr class="resolve-@item.DId" hidden="true">
-                                    <td colspan="8">
-                                        <table width="100%" class="table table-bordered">
-                                            @foreach (var resolve in item.Histories)
-                                            {
-                                                <tr>
-                                                    <td>@resolve.Hid</td>
-                                                    <td>@resolve.HAddress</td>
-                                                    @if (resolve.HDate != null)
-                                                    {
-                                                        <td align="center">@resolve.HDate.Value.ToString("dd.MM.yyyy")</td>
-                                                    }
-                                                    else
-                                                    {
-                                                        <td align="center"><i class="fa fa-times"></i></td>
-                                                    }
-                                                    @if (resolve.HResponsible == true)
-                                                    {
-                                                        <td align="center"><i class="fa fa-check"></i></td>
-                                                    }
-                                                    else
-                                                    {
-                                                        <td align="center"><i class="fa fa-times"></i></td>
-                                                    }
-                                                    @if (resolve.HOriginal == true)
-                                                    {
-                                                        <td align="center"><i class="fa fa-check"></i></td>
-                                                    }
-                                                    else
-                                                    {
-                                                        <td align="center"><i class="fa fa-times"></i></td>
-                                                    }
-                                                </tr>
-                                            }
-                                        </table>
-                                    </td>
-                                    <td style="display:none;">@item.DId</td>
-                                    <td style="display:none;">@item.DIndex</td>
-                                    <td style="display:none;">@item.DDate.ToString("dd.MM.yyyy")</td>
-                                    <td style="display:none;">@item.DFrom</td>
-                                    <td style="display:none;">@item.DAbout</td>
-                                    <td style="display:none;">@Html.DisplayFor(modelItem => item.File.FName)</td>
-                                    <td style="display:none;"></td>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>№</th>
+                                    <th>Індекс</th>
+                                    <th>Дата</th>
+                                    <th>Кореспондент</th>
+                                    <th>Зміст</th>
+                                    <th>Документ</th>
+                                    <th width="8%"></th>
                                 </tr>
-                            }
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>*@
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td align="center">
+                                            <i class="fa fa-chevron-down"></i>
+                                        </td>
+                                        <td>@item.DId</td>
+                                        <td>@item.DIndex</td>
+                                        <td>@item.DDate.ToString("dd.MM.yyyy")</td>
+                                        <td>@item.DFrom</td>
+                                        <td>@item.DAbout</td>
+                                        <td><a href="~/Home/Download/@item.FId">@Html.DisplayFor(modelItem => item.File.FName)</a></td>
+                                        <td align="center">
+                                            <div class="btn-group-vertical">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
+                                                        Керування
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="~/Home/AddResolve?hid=@item.DId">Написати резолюцію</a>
+                                                        <!-- <a class="dropdown-item">Назва 1</a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    if (item.Histories.Count != 0)
+                                    {
+                                        <tr class="resolve-@item.DId" hidden="true">
+                                            <td colspan="8">
+                                                <table width="100%" class="table table-bordered">
+                                                    @foreach (var resolve in item.Histories)
+                                                    {
+                                                        <tr>
+                                                            <td>@resolve.Hid</td>
+                                                            <td>@resolve.HAddress</td>
+                                                            @if (resolve.HDate != null)
+                                                            {
+                                                                <td align="center">@resolve.HDate.Value.ToString("dd.MM.yyyy")</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td align="center"><i class="fa fa-times"></i></td>
+                                                            }
+                                                            @if (resolve.HResponsible == true)
+                                                            {
+                                                                <td align="center"><i class="fa fa-check"></i></td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td align="center"><i class="fa fa-times"></i></td>
+                                                            }
+                                                            @if (resolve.HOriginal == true)
+                                                            {
+                                                                <td align="center"><i class="fa fa-check"></i></td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td align="center"><i class="fa fa-times"></i></td>
+                                                            }
+                                                        </tr>
+                                                    }
+                                                </table>
+                                            </td>
+                                            <td style="display:none;">@item.DId</td>
+                                            <td style="display:none;">@item.DIndex</td>
+                                            <td style="display:none;">@item.DDate.ToString("dd.MM.yyyy")</td>
+                                            <td style="display:none;">@item.DFrom</td>
+                                            <td style="display:none;">@item.DAbout</td>
+                                            <td style="display:none;">@Html.DisplayFor(modelItem => item.File.FName)</td>
+                                            <td style="display:none;"></td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>*@
             @*<div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="documentTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>№</th>
-                            <th>Індекс</th>
-                            <th>Дата</th>
-                            <th>Кореспондент</th>
-                            <th>Зміст</th>
-                            <th>Документ</th>
-                            <th width="8%"></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>*@
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="documentTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>№</th>
+                                    <th>Індекс</th>
+                                    <th>Дата</th>
+                                    <th>Кореспондент</th>
+                                    <th>Зміст</th>
+                                    <th>Документ</th>
+                                    <th width="8%"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>*@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="documentTable" width="100%" cellspacing="0">
@@ -150,31 +150,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(var item in Model)
+                            @foreach (var item in Model)
                             {
-                            <tr id="@item.DId">
-                                <td class=" details-control" align="center"><i class="fa fa-chevron-down"></i></td>
-                                <td>@item.DId</td>
-                                <td>@item.DIndex</td>
-                                <td>@item.DDate.ToString("dd.MM.yyyy")</td>
-                                <td>@item.DFrom</td>
-                                <td>@item.DAbout</td>
-                                <td><a href="~/Home/Download/@item.FId">@Html.DisplayFor(modelItem => item.File.FName)</a></td>
-                                <td>
-                                    <div class="btn-group-vertical">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
-                                                Керування
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="/Home/SendResolve?did=@item.DId">Написати резолюцію</a>
-                                                <a class="dropdown-item" href="/Home/AddAnswer?did=@item.DId">Звіт про виконання</a>
-                                                <!-- <a class="dropdown-item">Назва 1</a> -->
+                                <tr id="@item.DId">
+                                    <td class=" details-control" align="center"><i class="fa fa-chevron-down"></i></td>
+                                    <td>@item.DId</td>
+                                    <td>@item.DIndex</td>
+                                    <td>@item.DDate.ToString("dd.MM.yyyy")</td>
+                                    <td>@item.DFrom</td>
+                                    <td>@item.DAbout</td>
+                                    <td><a href="~/Home/Download/@item.FId">@Html.DisplayFor(modelItem => item.File.FName)</a></td>
+                                    <td>
+                                        <div class="btn-group-vertical">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
+                                                    Керування
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="/Home/SendResolve?did=@item.DId">Написати резолюцію</a>
+                                                    <a class="dropdown-item" href="/Home/AddAnswer?did=@item.DId">Звіт про виконання</a>
+                                                    <!-- <a class="dropdown-item">Назва 1</a> -->
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -186,6 +186,7 @@
     </div>
     <!-- /.container-fluid -->
     <!-- Sticky Footer -->
+
     <footer class="sticky-footer">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
@@ -193,6 +194,23 @@
             </div>
         </div>
     </footer>
+
+    <div id="aModal" style="display:none;">
+        <div class="modal fade" id="answerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Звіт</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="aBody"></div>
+                    <div class="modal-footer" id="aFooter"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/js/spoilerTable.js"></script>

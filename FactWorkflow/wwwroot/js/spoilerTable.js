@@ -1,4 +1,7 @@
-﻿$(document).ready(function () {
+﻿//"use strict";
+//document.addEventListener("DOMContentLoaded", function () {
+//});
+$(document).ready(function () {
     var table = $('#documentTable').DataTable({
         "columnDefs": [{ orderable: false, targets: [0, 6, 7] }],
         "order": [[1, "desc"]],
@@ -6,63 +9,6 @@
             "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Ukrainian.json"
         }
     });
-    //getTableData().then(data => {
-        //console.log(data);
-        //var table = $('#documentTable').DataTable({
-        //    "columnDefs": [{ orderable: false, targets: [0, 6, 7] }],
-        //    "order": [[1, "desc"]],
-        //    "language": {
-        //        "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Ukrainian.json"
-        //    },
-        //    "data": data,
-        //    "columns": [
-        //    {
-        //        "className": 'details-control',
-        //        "orderable": false,
-        //        "data": null,
-        //        "defaultContent": '',
-        //            "render": function (data, type, row, meta) {
-
-        //            return '<i class="fa fa-chevron-down"></i>';
-        //        }
-        //    },
-        //    { "data": "dId" },
-        //    { "data": "dIndex" },
-        //        {
-        //            "data": "dDate",
-        //            "render": function (data, type, row, meta) {
-        //                return new Date(data).toLocaleDateString();
-        //            }
-        //        },
-        //    { "data": "dFrom" },
-        //    { "data": "dAbout" },
-        //        {
-        //            "data": "file",
-        //            "orderable": false,
-        //            "defaultContent": '',
-        //            "render": function (data, type, row, meta) {
-        //                return '<a href="/Home/Download/' + data.fId + '">' + data.fName+'</a>';
-        //            }
-        //        },
-        //        {
-        //            "data": "dId",
-        //            "render": function (data, type, row, meta) {
-        //                return `<div class="btn-group-vertical">
-        //                                        <div class="btn-group">
-        //                                            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
-        //                                                Керування
-        //                                            </button>
-        //                                            <div class="dropdown-menu">
-        //                                                <a class="dropdown-item" href="/Home/SendResolve?did=${data}">Написати резолюцію</a>
-        //                                                <a class="dropdown-item" href="/Home/SendResolve?did=${data}">Видалити документ</a>
-        //                                                <!-- <a class="dropdown-item">Назва 1</a> -->
-        //                                            </div>
-        //                                        </div>
-        //                                    </div>`;
-        //            }
-        //        }
-        //    ]
-        //});
 
         $('#documentTable tbody').on('click', 'td.details-control', async function () {
             var tr = $(this).closest('tr');
@@ -80,7 +26,6 @@
                 tr.addClass('shown');
             }
         });
-    //});
 });
 
 function getChildData(id) {
@@ -97,7 +42,6 @@ function getChildData(id) {
 };
 
 function format(d) {
-    //console.log(d);
     if (d.length) {
         return `<table width="100%" class="table table-bordered">
                  ${tableRows(d)}   
@@ -120,6 +64,7 @@ function tableRows(histories) {
     let date = "";
     let responsible = "";
     let original = "";
+    let button = "";
     histories.forEach(h => {
         if (h.tId == 1) {
             type = "На ознайомлення";
@@ -145,6 +90,12 @@ function tableRows(histories) {
             original = "Не має оригінал";
         }
 
+        if (h.aId) {
+            button = `<button type="button" data-toggle="modal" class="btn btn-link" value=${h.aId} onclick="openAnswerModal(this)" href="#answerModal">Переглянути звіт</button>`;
+        } else {
+            button = "";
+        }
+
         body += `<tr>
                     <td>${h.userOut.uName}</td>
                     <td>${type}</td>
@@ -153,18 +104,24 @@ function tableRows(histories) {
                     <td>${responsible}</td>
                     <td>${original}</td>
                     <td>${h.status.sName}</td>
+                    <td style="text-align: center;">${button}</td>
                  </tr>`;
     });
     return body;
 }
 
-//<tr>
-//    <td>${h.userOut.uName}</td>
-//    <td>${h.tId}</td>
-//    <td>${h.user.uName}</td>
-//    <td>${h.hAddress}</td>
-//    <td>${h.hDate}</td>
-//    <td>${h.hResponsible}</td>
-//    <td>${h.hOriginal}</td>
-//    <td>${h.sId}</td>
-//</tr>
+async function openAnswerModal(element){
+    const { value } = element;
+    const answerUrl = window.location.origin + `/Home/GetAnswer?aid=${value}`;
+
+    let answer = await fetch(answerUrl)
+        .then(response => response.json());
+    console.log(answer);
+    let modal = document.getElementById("aModal");
+    let body = document.getElementById("aBody").append(`${answer.aText}`);
+    var btn = document.createElement("a");
+    btn.innerHTML = answer.file.fName;
+    btn.setAttribute("href", `/Home/Download/${answer.file.fId}`);
+    let footer = document.getElementById("aFooter").appendChild(btn);
+    modal.style.display ="block";
+}
