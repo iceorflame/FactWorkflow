@@ -45,12 +45,14 @@ namespace FactWorkflow.Controllers
             }
             if((HttpContext.User.IsInRole("office")) || (HttpContext.User.IsInRole("rector")))
             {
-                var documents = _context.Documents.Include(f => f.File).Include(h => h.Histories);
-                return View(documents);
+                //var documents = _context.Documents.Include(f => f.File).Include(h => h.Histories);
+                //return View(documents);
+                return RedirectToAction("Office", "Home");
             }
 
             User user = _context.Users.FirstOrDefault(u => u.UMail == HttpContext.User.Identity.Name);
-            var doc = _context.Documents.Include(f => f.File).Include(h => h.Histories).Where(c => c.Histories.Any(d => d.UId == user.UId));
+            //var doc = _context.Documents.Include(f => f.File).Include(h => h.Histories).Where(c => c.Histories.Any(d => d.UId == user.UId));
+            var doc = _context.Histories.Include(d => d.Document.File).Where(c => c.UId == user.UId);
             return View(doc);
         }
 
@@ -59,7 +61,7 @@ namespace FactWorkflow.Controllers
         public IActionResult Office()
         {
             ViewBag.Active = "Index";
-            var documents = _context.Resolves.Include(d => d.Document.File).Include(s => s.Status).Where(s => s.SId == 3);
+            var documents = _context.Documents.Include(f => f.File).Include(h => h.Histories);
             return View(documents);
         }
 
@@ -204,6 +206,7 @@ namespace FactWorkflow.Controllers
             User user = _context.Users.FirstOrDefault(u => u.UMail == HttpContext.User.Identity.Name);
             History history = _context.Histories.FirstOrDefault(h => h.DId == document.DId && h.UId == user.UId);
             history.AId = answer.AId;
+            history.SId = 8;
             _context.Entry(history).State = EntityState.Modified;
             _context.SaveChanges();
 
@@ -347,14 +350,14 @@ namespace FactWorkflow.Controllers
 
         public IActionResult ApplyWork(int did)
         {
-            var history = _context.Histories.Where(d => d.DId == did && d.TId == 2 && d.SId > 4);
+            var history = _context.Histories.Where(d => d.DId == did && d.TId == 2);
             foreach (var item in history)
             {
-                item.SId = 8;
+                item.SId = 9;
                 _context.Entry(item).State = EntityState.Modified;
             }
             _context.SaveChanges();
-            return RedirectToAction("DocumentTable", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]

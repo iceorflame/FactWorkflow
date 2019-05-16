@@ -78,7 +78,7 @@ using FactWorkflow.Models;
             WriteLiteral("\r\n<div id=\"content-wrapper\">\r\n\r\n    <div class=\"container-fluid\">\r\n\r\n        <!-- Breadcrumbs-->\r\n        <ol class=\"breadcrumb\">\r\n            <li class=\"breadcrumb-item\">\r\n                ");
             EndContext();
             BeginContext(409, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88634ddab0514d6685ebc45ada19564f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9326c24e565c489690266f343c2c1133", async() => {
                 BeginContext(432, 7, true);
                 WriteLiteral("Головна");
                 EndContext();
@@ -315,7 +315,7 @@ WriteAttributeValue("", 1664, hidden, 1664, 7, false);
             WriteLiteral("                                    <td>");
             EndContext();
             BeginContext(3848, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "94ffdfc863164c8b858a2b6021e53a25", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9eea109539841f58e45f187b5adc095", async() => {
                 BeginContext(3894, 54, false);
 #line 85 "C:\Users\vduc\Documents\GitHub\FactWorkflow\FactWorkflow\Views\Home\DocumentTable.cshtml"
                                                                                 Write(Html.DisplayFor(modelItem => item.Document.File.FName));
@@ -373,7 +373,7 @@ WriteAttributeValue("", 4106, hidden, 4106, 7, false);
                                                         ");
             EndContext();
             BeginContext(4701, 88, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "99bceedd41f042908f0d2e64fc79fcc8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "464758ca36444005ab13f8b156060ea8", async() => {
                 BeginContext(4764, 21, true);
                 WriteLiteral("Підтвердити виконання");
                 EndContext();
@@ -462,7 +462,7 @@ WriteAttributeValue("", 5287, hidden, 5287, 7, false);
     ");
             EndContext();
             BeginContext(5862, 51, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6e9b78dc94a431da00c065b0a3a5d31", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5c704bedc20e41d2a9e8d411c0fe09ca", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -480,7 +480,7 @@ WriteAttributeValue("", 5287, hidden, 5287, 7, false);
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(5919, 45, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b97c49a9e71241df8bf8e9d3771e32fc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "079876f858e7414b9274b83e8b6ed750", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

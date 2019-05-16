@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Users";
-    @model IEnumerable<FactWorkflow.Models.Resolve>;
+    @model IEnumerable<FactWorkflow.Models.Document>;
 }
 
 <div id="content-wrapper">
@@ -23,16 +23,16 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="documentTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>№</th>
                                 <th>Індекс</th>
                                 <th>Дата</th>
+                                <th>Вихідний індекс і дата</th>
                                 <th>Кореспондент</th>
                                 <th>Зміст</th>
-                                <th>Статус</th>
-                                <th>Текст резолюції</th>
                                 <th>Документ</th>
                                 <th width="8%"></th>
                             </tr>
@@ -40,50 +40,33 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>@item.Document.DId</td>
-                                <td>@item.Document.DIndex</td>
-                                <td>@item.Document.DDate.ToString("dd.MM.yyyy")</td>
-                                <td>@item.Document.DFrom</td>
-                                <td>@item.Document.DAbout</td>
-                                <td>@item.Status.SName</td>
-                                <td>@item.RText</td>
-                                <td><a href="~/Home/Download/@item.Document.FId">@Html.DisplayFor(modelItem => item.Document.File.FName)</a></td>
-                                <td align="center">
-                                    <div class="btn-group-vertical">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
-                                                Керування
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="~/Home/SendResolve?resid=@item.RId">Назначити осіб</a>
-                                                <a class="dropdown-item" href="~/Home/ConfirmResolve?rid=@item.RId">Підтвердити призначення</a>
+                                <tr id="@item.DId">
+                                    <td class=" details-control" align="center"><i class="fa fa-chevron-down"></i></td>
+                                    <td>@item.DId</td>
+                                    <td>@item.DIndex</td>
+                                    <td>@item.DDate.ToString("dd.MM.yyyy")</td>
+                                    <td>@item.DOut</td>
+                                    <td>@item.DFrom</td>
+                                    <td>@item.DAbout</td>
+                                    <td><a href="~/Home/Download/@item.FId">@Html.DisplayFor(modelItem => item.File.FName)</a></td>
+                                    <td>
+                                        <div class="btn-group-vertical">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration: none;">
+                                                    Керування
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="/Home/SendResolve?did=@item.DId">Написати резолюцію</a>
+                                                    @if (item.Histories.Count != 0)
+                                                    {
+                                                    <a class="dropdown-item" href="/Home/ApplyWork?did=@item.DId">Зняти з обліку</a>
+                                                    }
+                                                    <!-- <a class="dropdown-item">Назва 1</a> -->
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="5">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                                <td style="display: none"></td>
-                                <td style="display: none"></td>
-                                <td style="display: none"></td>
-                                <td style="display: none"></td>
-                                <td colspan="4"></td>
-                                <td style="display: none"></td>
-                                <td style="display: none"></td>
-                                <td style="display: none"></td>
-                            </tr>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -95,6 +78,7 @@
     </div>
     <!-- /.container-fluid -->
     <!-- Sticky Footer -->
+
     <footer class="sticky-footer">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
@@ -103,8 +87,25 @@
         </div>
     </footer>
 
+    <div id="aModal" style="display:none;">
+        <div class="modal fade" id="answerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Звіт</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="aBody"></div>
+                    <div class="modal-footer" id="aFooter"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/js/tableLanguage.js"></script>
+    <script src="~/js/spoilerTable.js"></script>
 
 </div>
 <!-- /.content-wrapper -->

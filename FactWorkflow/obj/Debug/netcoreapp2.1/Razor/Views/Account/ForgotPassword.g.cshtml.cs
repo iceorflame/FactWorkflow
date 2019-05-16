@@ -74,7 +74,7 @@ using FactWorkflow.Models;
             ");
             EndContext();
             BeginContext(451, 500, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7882c7d0b5d145b08e75568576b202fe", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bb53c2c0fd2a4572a6efc0901110a875", async() => {
                 BeginContext(457, 487, true);
                 WriteLiteral(@"
                 <div class=""form-group"">
@@ -104,7 +104,7 @@ using FactWorkflow.Models;
             WriteLiteral("\r\n            <div class=\"text-center\">\r\n                ");
             EndContext();
             BeginContext(1008, 79, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fda4063ba17346dd999e26f5d88a1a5b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b120c1c69a90454ebc31aa267809ceb4", async() => {
                 BeginContext(1064, 19, true);
                 WriteLiteral("Register an Account");
                 EndContext();
@@ -126,7 +126,7 @@ using FactWorkflow.Models;
             WriteLiteral("\r\n                ");
             EndContext();
             BeginContext(1105, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a193f10e0ce44ed99804acd1aca54cf4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "66767691338f4af4b82c43d146c186e6", async() => {
                 BeginContext(1153, 10, true);
                 WriteLiteral("Login Page");
                 EndContext();
