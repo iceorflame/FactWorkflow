@@ -31,7 +31,7 @@ namespace FactWorkflow.Services
 
         private void DoWork(object state)
         {
-            if ((DateTime.Now.Hour >= 17) && (DateTime.Now.Hour <= 18))
+            if ((DateTime.Now.Hour >= 1) && (DateTime.Now.Hour <= 2))
             {
                 using (var scope = scopeFactory.CreateScope())
                 {
@@ -41,7 +41,7 @@ namespace FactWorkflow.Services
                     {
                         if ((item.HDate <= DateTime.Now.Date) && (item.SId != 8))
                         {
-                            item.SId = 9;
+                            item.SId = 11;
                         }
                     }
                     _context.SaveChanges();

@@ -353,7 +353,7 @@ namespace FactWorkflow.Controllers
             var history = _context.Histories.Where(d => d.DId == did && d.TId == 2);
             foreach (var item in history)
             {
-                item.SId = 9;
+                item.SId = 10;
                 _context.Entry(item).State = EntityState.Modified;
             }
             _context.SaveChanges();

@@ -63,7 +63,7 @@ using FactWorkflow.Models;
             WriteLiteral("\r\n<div id=\"content-wrapper\">\r\n\r\n    <div class=\"container-fluid\">\r\n\r\n        <!-- Breadcrumbs-->\r\n        <ol class=\"breadcrumb\">\r\n            <li class=\"breadcrumb-item\">\r\n                ");
             EndContext();
             BeginContext(284, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2810fee0b864cc0b750810bce9dc274", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "999ebd38515d42c386d6b4531a488928", async() => {
                 BeginContext(307, 7, true);
                 WriteLiteral("Головна");
                 EndContext();
@@ -188,7 +188,7 @@ WriteAttributeValue("", 1574, item.DId, 1574, 9, false);
             WriteLiteral("</td>\r\n                                    <td>");
             EndContext();
             BeginContext(2163, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f96b91978c90485eac96e9031fd75d09", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "92a1b9c91e3b43a696aedce288db37b9", async() => {
                 BeginContext(2209, 54, false);
 #line 51 "D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\Views\Home\Index.cshtml"
                                                                                 Write(Html.DisplayFor(modelItem => item.Document.File.FName));
@@ -366,7 +366,7 @@ WriteAttributeValue("", 3866, item.DId, 3866, 9, false);
     ");
             EndContext();
             BeginContext(5678, 51, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "29a3302d185f425d81e1a58d18e4f9dd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9288274a97854f3abffb2af169468492", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -384,7 +384,7 @@ WriteAttributeValue("", 3866, item.DId, 3866, 9, false);
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(5735, 44, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e6aae67d628845ccb7d1609b2e760b3e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "85b1dd2be72d4772a6b81f51f8467802", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
