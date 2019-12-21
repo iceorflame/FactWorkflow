@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Users";
     @model IEnumerable<FactWorkflow.Models.Document>;
+    string color;
 }
 
 <div id="content-wrapper">
@@ -14,6 +15,31 @@
             </li>
             <li class="breadcrumb-item active">Документи</li>
         </ol>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Фільтрація документів
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div class="col-lg-6">
+                        <form role="form" method="post">
+                            <div class="form-group">
+                                <select class="form-control" id="documentSelect" name="documentSelect">
+                                    <option value="-1">Оберіть статус документу</option>
+                                    <option value="0">Нові/На ознайомлення</option>
+                                    <option value="1">Виконуються</option>
+                                    <option value="2">Виконані</option>
+                                    <option value="3">Прострочені</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-default">Відобразити</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- DataTables Example -->
         <div class="card mb-3">
@@ -40,7 +66,23 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr id="@item.DId">
+                                @if (item.DStatus == 0)
+                                {
+                                    color = "white";
+                                }
+                                else if (item.DStatus == 1)
+                                {
+                                    color = "yellow";
+                                }
+                                else if (item.DStatus == 2)
+                                {
+                                    color = "lime";
+                                }
+                                else
+                                {
+                                    color = "orangered";
+                                }
+                                <tr id="@item.DId" style="background-color:@color">
                                     <td class=" details-control" align="center"><i class="fa fa-chevron-down"></i></td>
                                     <td>@item.DId</td>
                                     <td>@item.DIndex</td>
@@ -56,10 +98,19 @@
                                                     Керування
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="/Home/SendResolve?did=@item.DId">Написати резолюцію</a>
+                                                    @if (User.IsInRole("office"))
+                                                    {
+                                                        <a class="dropdown-item" href="/Home/SendResolveOffice?did=@item.DId">Написати резолюцію</a>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <a class="dropdown-item" href="/Home/SendResolve?did=@item.DId">Написати резолюцію</a>
+
+                                                    }
                                                     @if (item.Histories.Count != 0)
                                                     {
-                                                    <a class="dropdown-item" href="/Home/ApplyWork?did=@item.DId">Зняти з контролю</a>
+                                                        <a class="dropdown-item" href="/Home/ApplyWork?did=@item.DId">Зняти з контролю</a>
                                                     }
                                                     <!-- <a class="dropdown-item">Назва 1</a> -->
                                                 </div>

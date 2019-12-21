@@ -15,6 +15,7 @@ namespace FactWorkflow.Models
         public string DOut { get; set; }
         public string DFrom { get; set; }
         public string DAbout { get; set; }
+        public int DStatus { get; set; }
 
         public int? FId { get; set; }
         public File File { get; set; }

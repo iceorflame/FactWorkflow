@@ -215,3 +215,4 @@ D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Ra
 D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\AddAnswer.g.cshtml.cs
 C:\Users\vduc\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\AddAnswer.g.cshtml.cs
 C:\Users\vduc\Documents\GitHub\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\Office.g.cshtml.cs
+D:\Data\Files\Visual Studio\FactWorkflow\FactWorkflow\obj\Debug\netcoreapp2.1\Razor\Views\Home\SendResolveOffice.g.cshtml.cs

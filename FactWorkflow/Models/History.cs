@@ -36,6 +36,8 @@ namespace FactWorkflow.Models
 
         public string HAddress { get; set; }
 
+        public string HText { get; set; }
+
         public int SId { get; set; }
         public Status Status { get; set; }
 

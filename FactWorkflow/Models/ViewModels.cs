@@ -11,6 +11,13 @@ namespace FactWorkflow.Models
         public IEnumerable<History> Histories { get; set; }
     }
 
+    public class SendResolveOffice
+    {
+        public Document Document { get; set; }
+        public IEnumerable<History> Histories { get; set; }
+        public IEnumerable<User> Users { get; set; }
+    }
+
     public class AddResolve
     {
         public History History { get; set; }

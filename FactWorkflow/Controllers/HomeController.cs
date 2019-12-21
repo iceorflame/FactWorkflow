@@ -56,6 +56,50 @@ namespace FactWorkflow.Controllers
             return View(doc);
         }
 
+        [HttpPost]
+        [Authorize(Roles = "office,rector,vrector,dean,cathedra,admin")]
+        public IActionResult Index(int documentSelect)
+        {
+            ViewBag.Active = "Index";
+            if (HttpContext.User.IsInRole("admin"))
+            {
+                return RedirectToAction("TokenTable", "Administration");
+            }
+            if ((HttpContext.User.IsInRole("office")) || (HttpContext.User.IsInRole("rector")))
+            {
+                //var documents = _context.Documents.Include(f => f.File).Include(h => h.Histories);
+                //return View(documents);
+                return RedirectToAction("Office", "Home");
+            }
+
+            User user = _context.Users.FirstOrDefault(u => u.UMail == HttpContext.User.Identity.Name);
+
+            if (documentSelect == 0)
+            {
+                var doc = _context.Histories.Include(d => d.Document.File).Where(c => c.UId == user.UId && c.Document.DStatus == 0);
+                return View(doc);
+            }
+            else if (documentSelect == 1)
+            {
+                var doc = _context.Histories.Include(d => d.Document.File).Where(c => c.UId == user.UId && c.Document.DStatus == 1);
+                return View(doc);
+            }
+            else if (documentSelect == 2)
+            {
+                var doc = _context.Histories.Include(d => d.Document.File).Where(c => c.UId == user.UId && c.Document.DStatus == 2);
+                return View(doc);
+            }
+            else if (documentSelect == 3)
+            {
+                var doc = _context.Histories.Include(d => d.Document.File).Where(c => c.UId == user.UId && c.Document.DStatus == 3);
+                return View(doc);
+            }
+
+            //var doc = _context.Documents.Include(f => f.File).Include(h => h.Histories).Where(c => c.Histories.Any(d => d.UId == user.UId));
+            var document = _context.Histories.Include(d => d.Document.File).Where(c => c.UId == user.UId);
+            return View(document);
+        }
+
         [HttpGet]
         [Authorize(Roles = "office,rector,vrector,dean,cathedra,admin")]
         public IActionResult Office()
@@ -65,6 +109,36 @@ namespace FactWorkflow.Controllers
             return View(documents);
         }
 
+        [HttpPost]
+        [Authorize(Roles = "office,rector,vrector,dean,cathedra,admin")]
+        public IActionResult Office(int documentSelect)
+        {
+            ViewBag.Active = "Index";
+            if (documentSelect == 0)
+            {
+                var doc = _context.Documents.Where(d=>d.DStatus == 0).Include(f => f.File).Include(h => h.Histories);
+                return View(doc);
+            }
+            else if(documentSelect == 1)
+            {
+                var doc = _context.Documents.Where(d => d.DStatus == 1).Include(f => f.File).Include(h => h.Histories);
+                return View(doc);
+            }
+            else if (documentSelect == 2)
+            {
+                var doc = _context.Documents.Where(d => d.DStatus == 2).Include(f => f.File).Include(h => h.Histories);
+                return View(doc);
+            }
+            else if (documentSelect == 3)
+            {
+                var doc= _context.Documents.Where(d => d.DStatus == 3).Include(f => f.File).Include(h => h.Histories);
+                return View(doc);
+            }
+            var documents = _context.Documents.Include(f => f.File).Include(h => h.Histories);
+            return View(documents);
+        }
+
+      
         [HttpGet]
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
         public IActionResult DataChange()
@@ -126,7 +200,8 @@ namespace FactWorkflow.Controllers
 
                         document.FId = file.FId;
                         document.DDate = DateTime.Now;
-                        document.DIndex = document.DId + "/" + classification + "/1.9";
+                        document.DIndex = document.DId + "/" + classification + "-1.9";
+                        document.DStatus = 0;
                         _context.Entry(document).State = EntityState.Modified;
                         _context.SaveChanges();
                     }
@@ -261,7 +336,7 @@ namespace FactWorkflow.Controllers
 
         [HttpPost]
         [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
-        public IActionResult SendResolve(Document document, int optradio,int roleSelect, int userSelect, string userName, DateTime dateSelect, bool rOriginal, bool rResponsible)
+        public IActionResult SendResolve(Document document, int optradio,int roleSelect, int userSelect, string userName, DateTime dateSelect, string rText, bool rOriginal, bool rResponsible)
         {
             string u;
             User us;
@@ -286,16 +361,66 @@ namespace FactWorkflow.Controllers
 
             if (optradio == 1)
             {
-                _context.Histories.Add(new History {  HUser = us.UId, TId = 1, DId = document.DId, UId = userSelect, HAddress = u, HOriginal=rOriginal,HResponsible=rResponsible, SId = 5 });
+                _context.Histories.Add(new History {  HUser = us.UId, TId = 1, DId = document.DId, UId = userSelect, HAddress = u, HText="", HOriginal=rOriginal,HResponsible=rResponsible, SId = 5 });
             }
             else
             {
-                _context.Histories.Add(new History { HUser = us.UId, TId = 2, DId = document.DId, UId = userSelect, HAddress = u, HDate = dateSelect.Date, HOriginal = rOriginal, HResponsible = rResponsible, SId = 5 });
+                _context.Histories.Add(new History { HUser = us.UId, TId = 2, DId = document.DId, UId = userSelect, HAddress = u, HDate = dateSelect.Date, HText=rText, HOriginal = rOriginal, HResponsible = rResponsible, SId = 5 });
+                Document doc = _context.Documents.Find(document.DId);
+                doc.DStatus = 1;
+                _context.Entry(doc).State = EntityState.Modified;
             }
             _context.SaveChanges();
 
             var history = _context.Histories.Include(t => t.Type).Where(h => h.HUser == us.UId && h.DId == document.DId);
             SendResolve sendResolve = new SendResolve { Document = document, Histories = history };
+            return View(sendResolve);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "office")]
+        public IActionResult SendResolveOffice(int did)
+        {
+            Document document = _context.Documents.Find(did);
+
+            var history2 = _context.Histories.Include(t => t.Type).Include(u=>u.UserOut).Where(h => h.DId == did);
+            var users = _context.Users.Where(u => u.RId > 3 && u.RId < 6);
+            SendResolveOffice sendResolve2 = new SendResolveOffice { Document = document, Histories = history2, Users = users };
+            return View(sendResolve2);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "office,rector,vrector,dean,cathedra")]
+        public IActionResult SendResolveOffice(Document document, int authorSelect, int optradio, int roleSelect, int userSelect, string userName, DateTime dateSelect, string rText, bool rOriginal, bool rResponsible)
+        {
+            string u;
+
+            if (roleSelect != 7)
+            {
+                User user = _context.Users.Find(userSelect);
+                u = user.UName;
+            }
+            else
+            {
+                u = userName;
+            }
+
+            if (optradio == 1)
+            {
+                _context.Histories.Add(new History { HUser = authorSelect, TId = 1, DId = document.DId, UId = userSelect, HAddress = u, HText = "", HOriginal = rOriginal, HResponsible = rResponsible, SId = 5 });
+            }
+            else
+            {
+                _context.Histories.Add(new History { HUser = authorSelect, TId = 2, DId = document.DId, UId = userSelect, HAddress = u, HDate = dateSelect.Date, HText = rText, HOriginal = rOriginal, HResponsible = rResponsible, SId = 5 });
+                Document doc = _context.Documents.Find(document.DId);
+                doc.DStatus = 1;
+                _context.Entry(doc).State = EntityState.Modified;
+            }
+            _context.SaveChanges();
+
+            var history = _context.Histories.Include(t => t.Type).Include(d => d.UserOut).Where(h => h.DId == document.DId);
+            var users = _context.Users.Where(g => g.RId > 3 && g.RId < 6);
+            SendResolveOffice sendResolve = new SendResolveOffice { Document = document, Histories = history, Users = users};
             return View(sendResolve);
         }
 
@@ -329,33 +454,50 @@ namespace FactWorkflow.Controllers
             History history = _context.Histories.Find(hid);
             _context.Histories.Remove(history);
             _context.SaveChanges();
-           /* Document document = _context.Documents.Find(history.DId);
 
-            if (User.IsInRole("office"))
+            int histories = _context.Histories.Where(h => h.DId == history.DId && h.TId == 2).Count();
+            if (histories == 0)
             {
-                User user2 = _context.Users.FirstOrDefault(u => u.RId == 4);
-
-                var history2 = _context.Histories.Include(t => t.Type).Where(h => h.HUser == user2.UId && h.DId == history.DId);
-                SendResolve sendResolve2 = new SendResolve { Document = document, Histories = history2 };
-                return RedirectToAction("SendResolve", "Home", sendResolve2);
+                Document document = _context.Documents.Find(history.DId);
+                document.DStatus = 0;
+                _context.Entry(document).State = EntityState.Modified;
+                _context.SaveChanges();
             }
 
-            User user = _context.Users.FirstOrDefault(u => u.UMail == HttpContext.User.Identity.Name);
+            /* Document document = _context.Documents.Find(history.DId);
+
+             if (User.IsInRole("office"))
+             {
+                 User user2 = _context.Users.FirstOrDefault(u => u.RId == 4);
+
+                 var history2 = _context.Histories.Include(t => t.Type).Where(h => h.HUser == user2.UId && h.DId == history.DId);
+                 SendResolve sendResolve2 = new SendResolve { Document = document, Histories = history2 };
+                 return RedirectToAction("SendResolve", "Home", sendResolve2);
+             }
+
+             User user = _context.Users.FirstOrDefault(u => u.UMail == HttpContext.User.Identity.Name);
 
 
-            var his = _context.Histories.Include(t => t.Type).Where(h => h.HUser == user.UId && h.DId == history.DId);
-            SendResolve sendResolve = new SendResolve { Document = document, Histories = his };*/
+             var his = _context.Histories.Include(t => t.Type).Where(h => h.HUser == user.UId && h.DId == history.DId);
+             SendResolve sendResolve = new SendResolve { Document = document, Histories = his };*/
+            if (HttpContext.User.IsInRole("office"))
+            {
+                return RedirectToAction("SendResolveOffice", "Home", new { did = history.DId });
+            }
             return RedirectToAction("SendResolve", "Home", new { did = history.DId });
         }
 
         public IActionResult ApplyWork(int did)
         {
             var history = _context.Histories.Where(d => d.DId == did && d.TId == 2);
+            var doc = _context.Documents.Find(did);
             foreach (var item in history)
             {
                 item.SId = 10;
                 _context.Entry(item).State = EntityState.Modified;
             }
+            doc.DStatus = 2;
+            _context.Entry(doc).State = EntityState.Modified;
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }

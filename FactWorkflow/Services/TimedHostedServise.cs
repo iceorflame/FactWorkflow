@@ -36,12 +36,13 @@ namespace FactWorkflow.Services
                 using (var scope = scopeFactory.CreateScope())
                 {
                     var _context = scope.ServiceProvider.GetRequiredService<WorkflowContext>();
-                    var historyList = _context.Histories.Where(r => r.TId == 2);
+                    var historyList = _context.Histories.Where(r => r.TId == 2).Include(d => d.Document);
                     foreach (var item in historyList)
                     {
                         if ((item.HDate <= DateTime.Now.Date) && (item.SId != 8))
                         {
                             item.SId = 11;
+                            item.Document.DStatus = 3;
                         }
                     }
                     _context.SaveChanges();

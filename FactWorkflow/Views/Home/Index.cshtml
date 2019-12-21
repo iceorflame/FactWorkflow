@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Users";
     @model IEnumerable<FactWorkflow.Models.History>;
+    string color;
 }
 
 <div id="content-wrapper">
@@ -14,6 +15,31 @@
             </li>
             <li class="breadcrumb-item active">Документи</li>
         </ol>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Фільтрація документів
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div class="col-lg-6">
+                        <form role="form" method="post">
+                            <div class="form-group">
+                                <select class="form-control" id="documentSelect" name="documentSelect">
+                                    <option value="-1">Оберіть статус документу</option>
+                                    <option value="0">Нові/На ознайомлення</option>
+                                    <option value="1">Виконуються</option>
+                                    <option value="2">Виконані</option>
+                                    <option value="3">Прострочені</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-default">Відобразити</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- DataTables Example -->
         <div class="card mb-3">
@@ -34,13 +60,30 @@
                                 <th>Кореспондент</th>
                                 <th>Зміст</th>
                                 <th>Документ</th>
+                                <th>Зміст резолюції</th>
                                 <th width="8%"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr id="@item.DId">
+                                @if (item.Document.DStatus == 0)
+                                {
+                                    color = "white";
+                                }
+                                else if (item.Document.DStatus == 1)
+                                {
+                                    color = "yellow";
+                                }
+                                else if (item.Document.DStatus == 2)
+                                {
+                                    color = "lime";
+                                }
+                                else
+                                {
+                                    color = "orangered";
+                                }
+                                <tr id="@item.DId" style="background-color:@color">
                                     <td class=" details-control" align="center"><i class="fa fa-chevron-down"></i></td>
                                     <td>@item.DId</td>
                                     <td>@item.Document.DIndex</td>
@@ -49,6 +92,7 @@
                                     <td>@item.Document.DFrom</td>
                                     <td>@item.Document.DAbout</td>
                                     <td><a href="~/Home/Download/@item.Document.FId">@Html.DisplayFor(modelItem => item.Document.File.FName)</a></td>
+                                    <td>@item.HText</td>
                                     <td>
                                         <div class="btn-group-vertical">
                                             <div class="btn-group">
@@ -58,7 +102,7 @@
                                                 <div class="dropdown-menu">
                                                     @if (item.SId == 5)
                                                     {
-                                                    <a class="dropdown-item" href="/Home/ChangeStatus?hid=@item.Hid">Підтвердити отримання</a>
+                                                        <a class="dropdown-item" href="/Home/ChangeStatus?hid=@item.Hid">Підтвердити отримання</a>
                                                     }
                                                     else
                                                     {
